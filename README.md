@@ -12,10 +12,10 @@ information for an individual. The program should enable users to search and fil
 information as needed.
 
 # Features
-UAC for Sysadmins, CTE employees, and standard users
-Distributed searching power over remote backend databases
-Detailed storage of businesses and partners.
-Datasets and creativity powered by Large Language Machine Learning AI Models
-Centralized network for accessbility
-Wide range of supported platforms
-Source code available for distribution and self-compilation
+- UAC for Sysadmins, CTE employees, and standard users
+- Distributed searching power over remote backend databases
+- Detailed storage of businesses and partners.
+- Datasets and creativity powered by Large Language Machine Learning AI Models
+- Centralized network for accessbility
+- Wide range of supported platforms
+- Source code available for distribution and self-compilation
