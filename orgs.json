@@ -1,7 +1,7 @@
 [
   "name" : {
-    "Type": "type",
-    "Resources": "resources",
-    "Contact": "contact"
-  } 
+    "type": "type",
+    "resources": "resources",
+    "contact": "contact"
+  }
 ]
