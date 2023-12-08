@@ -1,5 +1,5 @@
 # CommunityConnect
-Collect, store and parse information on local business and community partners.
+Collect, store and parse information on local business and community partners. Now with Ivan
 
 Our team here at Glitch Technologies designed this software to be used for the 2024 FBLA Coding and Programming Competition. It's licensed under GPL because what kind of a person wouldn't do that. This app will be written in Dart and probably use Python to handle backend implementations.
 
