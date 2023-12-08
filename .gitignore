@@ -1,0 +1,6 @@
+poetry.lock
+pyproject.toml
+.upm/
+.replit
+.replitnix
+.nix
