@@ -1,7 +1,504 @@
-[
-  "name" : {
-    "type": "type",
-    "resources": "resources",
-    "contact": "contact"
-  }
-]
+{
+  "organizations": [
+    {
+      "name": "TechSphere Inc.",
+      "type": "Technology Consultancy Firm",
+      "resources": "Cutting-edge software development tools and a team of 50 engineers",
+      "contact": {
+        "name": "John Smith",
+        "position": "CTO",
+        "email": "john@techsphere.com"
+      }
+    },
+    {
+      "name": "GreenScape Alliance",
+      "type": "Environmental NGO",
+      "resources": "Network of 500 volunteers, environmental research lab",
+      "contact": {
+        "name": "Emily Green",
+        "position": "Director",
+        "email": "emily@greenscape.org"
+      }
+    },
+    {
+      "name": "GlobalHealth Innovations",
+      "type": "Healthcare Solutions Provider",
+      "resources": "Medical research facilities, 24/7 medical helpline",
+      "contact": {
+        "name": "Dr. Mark Johnson",
+        "position": "CEO",
+        "email": "mark@globalhealth.com"
+      }
+    },
+    {
+      "name": "FutureWorks Academy",
+      "type": "Education & Training Institute",
+      "resources": "Online learning platform, expert instructors",
+      "contact": {
+        "name": "Sarah Lee",
+        "position": "Head of Partnerships",
+        "email": "sarah@futureworks.org"
+      }
+    },
+    {
+      "name": "UrbanBuilders Consortium",
+      "type": "Construction and Development Company",
+      "resources": "Skilled labor force, state-of-the-art equipment",
+      "contact": {
+        "name": "David Thompson",
+        "position": "Project Manager",
+        "email": "david@urbanbuilders.net"
+      }
+    },
+    {
+      "name": "ArtsFusion Collective",
+      "type": "Arts and Culture Organization",
+      "resources": "Artist residency program, exhibition spaces",
+      "contact": {
+        "name": "Rachel Adams",
+        "position": "Creative Director",
+        "email": "rachel@artsfusion.org"
+      }
+    },
+    {
+      "name": "InvestWell Finance Group",
+      "type": "Financial Advisory Firm",
+      "resources": "Investment analysis tools, expert financial advisors",
+      "contact": {
+        "name": "Michael Reynolds",
+        "position": "Senior Financial Analyst",
+        "email": "michael@investwellgroup.com"
+      }
+    },
+    {
+      "name": "CleanEco Solutions",
+      "type": "Sustainable Cleaning Products Manufacturer",
+      "resources": "Eco-friendly product line, R&D team",
+      "contact": {
+        "name": "Laura White",
+        "position": "Marketing Manager",
+        "email": "laura@cleaneco.com"
+      }
+    },
+    {
+      "name": "YouthEmpower Network",
+      "type": "Youth Development Nonprofit",
+      "resources": "Mentorship programs, youth centers",
+      "contact": {
+        "name": "Alex Johnson",
+        "position": "Program Coordinator",
+        "email": "alex@youthempower.org"
+      }
+    },
+    {
+      "name": "TechBoost Innovations",
+      "type": "Technology Incubator",
+      "resources": "Startup mentoring, co-working spaces",
+      "contact": {
+        "name": "Jessica Adams",
+        "position": "Innovation Manager",
+        "email": "jessica@techboost.com"
+      }
+    },
+    {
+      "name": "FoodShare Foundation",
+      "type": "Hunger Relief Organization",
+      "resources": "Food banks, community kitchens",
+      "contact": {
+        "name": "Sam Patel",
+        "position": "Volunteer Coordinator",
+        "email": "sam@foodsharefoundation.org"
+      }
+    },
+    {
+      "name": "SolarTech Solutions",
+      "type": "Renewable Energy Company",
+      "resources": "Solar panel manufacturing, solar farm installations",
+      "contact": {
+        "name": "Rachel Carter",
+        "position": "Sales Manager",
+        "email": "rachel@solar-techsolutions.com"
+      }
+    },
+    {
+      "name": "DataInsights Corporation",
+      "type": "Data Analytics Firm",
+      "resources": "Advanced data analysis tools, data scientists",
+      "contact": {
+        "name": "Steven Lewis",
+        "position": "Chief Data Officer",
+        "email": "steven@datainsights.co"
+      }
+    },
+    {
+      "name": "GlobalEducation Exchange",
+      "type": "International Student Exchange Program",
+      "resources": "Network of partner universities, cultural immersion programs",
+      "contact": {
+        "name": "Maria Rodriguez",
+        "position": "Program Director",
+        "email": "maria@globaledexchange.org"
+      }
+    },
+    {
+      "name": "HealthFirst Clinics",
+      "type": "Medical Clinics Chain",
+      "resources": "Multi-specialty doctors, modern medical facilities",
+      "contact": {
+        "name": "Dr. Emily Davis",
+        "position": "Medical Director",
+        "email": "emily@healthfirstclinics.com"
+      }
+    },
+    {
+      "name": "EcoHarvest Farms",
+      "type": "Organic Farming Cooperative",
+      "resources": "Vast farmlands, sustainable agricultural practices",
+      "contact": {
+        "name": "Daniel Brown",
+        "position": "Farm Manager",
+        "email": "daniel@ecoharvestfarms.org"
+      }
+    },
+    {
+      "name": "TechConnect Labs",
+      "type": "Research & Development Center",
+      "resources": "State-funded grants, research partnerships",
+      "contact": {
+        "name": "Dr. Sarah Johnson",
+        "position": "Research Lead",
+        "email": "sarah@techconnectlabs.net"
+      }
+    },
+    {
+      "name": "CommuniCare Foundation",
+      "type": "Community Health Services",
+      "resources": "Mobile clinics, health education programs",
+      "contact": {
+        "name": "Laura Adams",
+        "position": "Outreach Coordinator",
+        "email": "laura@communicare.foundation"
+      }
+    },
+    {
+      "name": "EnviroGuardians",
+      "type": "Environmental Protection Group",
+      "resources": "Legal advocacy, environmental policy experts",
+      "contact": {
+        "name": "Thomas Hughes",
+        "position": "Environmental Lawyer",
+        "email": "thomas@enviroguardians.com"
+      }
+    },
+    {
+      "name": "FutureTech Innovations",
+      "type": "Futuristic Technology Research Institute",
+      "resources": "AI labs, quantum computing research",
+      "contact": {
+        "name": "Dr. Alex Chen",
+        "position": "Chief Scientist",
+        "email": "alex@futuretechinnovations.org"
+      }
+    },
+    {
+      "name": "STEMEdge Foundation",
+      "type": "STEM Education Advocacy Group",
+      "resources": "Robotics kits, coding workshops",
+      "contact": {
+        "name": "Karen Foster",
+        "position": "Program Manager",
+        "email": "karen@stemedgefoundation.org"
+      }
+    },
+    {
+      "name": "Global Learning Initiative",
+      "type": "Educational Content Provider",
+      "resources": "Online learning platforms, interactive courses",
+      "contact": {
+        "name": "James Collins",
+        "position": "Director of Education",
+        "email": "james@globallearninginitiative.com"
+      }
+    },
+    {
+      "name": "Artistry Academy",
+      "type": "Creative Arts School",
+      "resources": "Art studios, masterclasses by renowned artists",
+      "contact": {
+        "name": "Olivia Turner",
+        "position": "Dean of Arts",
+        "email": "olivia@artistryacademy.org"
+      }
+    },
+    {
+      "name": "LanguageLink Institute",
+      "type": "Language Learning Center",
+      "resources": "Immersive language programs, cultural exchanges",
+      "contact": {
+        "name": "Miguel Hernandez",
+        "position": "Language Program Coordinator",
+        "email": "miguel@languagelinkinstitute.com"
+      }
+    },
+    {
+      "name": "FutureSkills Institute",
+      "type": "Vocational Training Center",
+      "resources": "Industry partnerships, hands-on training facilities",
+      "contact": {
+        "name": "Sophia Clark",
+        "position": "Career Advisor",
+        "email": "sophia@futureskillsinstitute.org"
+      }
+    },
+    {
+      "name": "GreenEarth Education",
+      "type": "Environmental Education Nonprofit",
+      "resources": "Nature reserves, sustainability workshops",
+      "contact": {
+        "name": "Anna White",
+        "position": "Environmental Educator",
+        "email": "anna@greeneartheducation.org"
+      }
+    },
+    {
+      "name": "TechGenius Academy",
+      "type": "Technology Education Center",
+      "resources": "Coding boot camps, tech competitions",
+      "contact": {
+        "name": "Daniel Lee",
+        "position": "Head Instructor",
+        "email": "daniel@techgeniusacademy.com"
+      }
+    },
+    {
+      "name": "Globetrotter Schools Network",
+      "type": "International School Network",
+      "resources": "Diverse curriculum, global exchange programs",
+      "contact": {
+        "name": "Lisa Anderson",
+        "position": "Admissions Director",
+        "email": "lisa@globetrotterschools.net"
+      }
+    },
+    {
+      "name": "BrainBuilders Institute",
+      "type": "Cognitive Development Center",
+      "resources": "Brain games, neuroscience research partnerships",
+      "contact": {
+        "name": "Dr. Benjamin Garcia",
+        "position": "Director",
+        "email": "benjamin@brainbuildersinstitute.org"
+      }
+    },
+    {
+      "name": "Community Connect Education",
+      "type": "Community-based Learning Centers",
+      "resources": "After-school programs, tutoring services",
+      "contact": {
+        "name": "Rachel Thompson",
+        "position": "Program Coordinator",
+        "email": "rachel@communityconnecteducation.org"
+      }
+    },
+    {
+      "name": "CareerLaunch Institute",
+      "type": "CTE Vocational Training Center",
+      "resources": "Internship placements, industry-specific training",
+      "contact": {
+        "name": "Jason Adams",
+        "position": "Program Director",
+        "email": "jason@careerlaunchinstitute.org"
+      }
+    },
+    {
+      "name": "TradeSkills Alliance",
+      "type": "Trade Skills Development Organization",
+      "resources": "Apprenticeship programs, skilled trade mentors",
+      "contact": {
+        "name": "Sarah Barnes",
+        "position": "Apprenticeship Coordinator",
+        "email": "sarah@tradeskillsalliance.com"
+      }
+    },
+    {
+      "name": "TechCareer Innovators",
+      "type": "Technology Career Development Firm",
+      "resources": "Tech boot camps, job placement services",
+      "contact": {
+        "name": "Brian Foster",
+        "position": "Career Coach",
+        "email": "brian@techcareerinnovators.org"
+      }
+    },
+    {
+      "name": "FutureBuilders Association",
+      "type": "Construction Industry Education Group",
+      "resources": "Construction workshops, mentorship by builders",
+      "contact": {
+        "name": "David Miller",
+        "position": "Education Coordinator",
+        "email": "david@futurebuildersassociation.com"
+      }
+    },
+    {
+      "name": "HealthPath Academy",
+      "type": "Healthcare Career Training Center",
+      "resources": "Simulated medical environments, clinical internships",
+      "contact": {
+        "name": "Dr. Rebecca Johnson",
+        "position": "Program Director",
+        "email": "rebecca@healthpathacademy.org"
+      }
+    },
+    {
+      "name": "STEMWorks Collaborative",
+      "type": "STEM Career Preparation Consortium",
+      "resources": "STEM career fairs, industry partnerships",
+      "contact": {
+        "name": "Rachel Carter",
+        "position": "Outreach Coordinator",
+        "email": "rachel@stemworkscollaborative.com"
+      }
+    },
+    {
+      "name": "GlobalTech Skills",
+      "type": "International Tech Skills Development Network",
+      "resources": "Global tech conferences, coding camps",
+      "contact": {
+        "name": "Alex Chen",
+        "position": "Program Manager",
+        "email": "alex@globaltechskills.org"
+      }
+    },
+    {
+      "name": "CreativeCrafters Guild",
+      "type": "Artisanal Skills Training Association",
+      "resources": "Craftsmanship workshops, traditional art showcases",
+      "contact": {
+        "name": "Olivia White",
+        "position": "Artisan Coordinator",
+        "email": "olivia@creativecraftersguild.org"
+      }
+    },
+    {
+      "name": "BusinessEdge Academy",
+      "type": "Business and Entrepreneurship Education Center",
+      "resources": "Startup incubation, business mentorship",
+      "contact": {
+        "name": "Mark Taylor",
+        "position": "Entrepreneurship Coach",
+        "email": "mark@businessedgeacademy.com"
+      }
+    },
+    {
+      "name": "EnviroTech Initiative",
+      "type": "Environmental Technology Education Group",
+      "resources": "Green technology labs, eco-innovation projects",
+      "contact": {
+        "name": "Emma Green",
+        "position": "Program Manager",
+        "email": "emma@envirotechinitiative.org"
+      }
+    },
+    {
+      "name": "BusinessElite Institute",
+      "type": "Business Leadership Development Center",
+      "resources": "Executive seminars, leadership training",
+      "contact": {
+        "name": "Sarah Johnson",
+        "position": "Director",
+        "email": "sarah@businesseliteinstitute.org"
+      }
+    },
+    {
+      "name": "GreenTech Innovations",
+      "type": "Environmental Technology Startup",
+      "resources": "Innovative green technology solutions, research and development team",
+      "contact": {
+        "name": "Emma Robinson",
+        "position": "Founder",
+        "email": "emma@greentechinnovations.com"
+      }
+    },
+    {
+      "name": "HealthCatalyst Labs",
+      "type": "Healthcare Data Analytics Firm",
+      "resources": "Cutting-edge data analysis tools, healthcare data scientists",
+      "contact": {
+        "name": "Dr. Amanda Carter",
+        "position": "Chief Data Scientist",
+        "email": "amanda@healthcatalystlabs.com"
+      }
+    },
+    {
+      "name": "FutureFashion Collective",
+      "type": "Sustainable Fashion Initiative",
+      "resources": "Fashion design studios, eco-friendly material research",
+      "contact": {
+        "name": "Chris Turner",
+        "position": "Fashion Director",
+        "email": "chris@futurefashioncollective.org"
+      }
+    },
+    {
+      "name": "TechSustain Solutions",
+      "type": "Renewable Technology Consultancy",
+      "resources": "Consultancy for sustainable tech solutions, expert engineers",
+      "contact": {
+        "name": "Sophie Miller",
+        "position": "Sustainability Consultant",
+        "email": "sophie@techsustain.com"
+      }
+    },
+    {
+      "name": "InnovateWell Foundation",
+      "type": "Innovation and Research Nonprofit",
+      "resources": "Grants for innovative projects, research partnerships",
+      "contact": {
+        "name": "David Foster",
+        "position": "Executive Director",
+        "email": "david@innovatewellfoundation.org"
+      }
+    },
+    {
+      "name": "UrbanArt Studios",
+      "type": "Urban Art Development Company",
+      "resources": "Public art installations, community art projects",
+      "contact": {
+        "name": "Olivia Adams",
+        "position": "Artistic Director",
+        "email": "olivia@urbanartstudios.net"
+      }
+    },
+    {
+      "name": "FinanceForward Solutions",
+      "type": "Financial Technology Startup",
+      "resources": "Fintech solutions, financial analysts",
+      "contact": {
+        "name": "Michael Turner",
+        "position": "Co-Founder",
+        "email": "michael@financeforward.com"
+      }
+    },
+    {
+      "name": "CleanEnergy Innovators",
+      "type": "Clean Energy Research Institute",
+      "resources": "Research in clean energy technologies, collaboration with experts",
+      "contact": {
+        "name": "Dr. Laura Davis",
+        "position": "Research Director",
+        "email": "laura@cleanenergyinnovators.org"
+      }
+    },
+    {
+      "name": "YouthTech Hub",
+      "type": "Youth Technology Education Center",
+      "resources": "Coding workshops, tech mentorship programs",
+      "contact": {
+        "name": "Alex Turner",
+        "position": "Program Coordinator",
+        "email": "alex@youthtechhub.org"
+      }
+    }
+  ]
+}
