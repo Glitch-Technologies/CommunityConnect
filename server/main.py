@@ -1,21 +1,16 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-import base62
 from urllib.parse import urlparse
 import os
 
-import insta
+# import insta
+# For instagram API, only activate after configuring session.json(See Starlight)
+
 import search
 
 hostName = "glitchtech.top"
 serverPort = 10
 
-
-def handle_image(img):
-    out_image = open("upload.jpg", "wb")
-    out_image.write(img)
-    out_image.close()
-    os.system('cp upload.jpg /var/www/isvincent.gay/public_html/upload.jpg')
 
 
 def in_index(mylist, target):
@@ -23,11 +18,6 @@ def in_index(mylist, target):
         if i == target:
             return True
     return False
-
-
-def de(input_str):
-    return base62.decodebytes(input_str).decode("utf-8")
-
 
 def jwrite(file, out_json):
     outfile = open(file, "w")
@@ -52,19 +42,6 @@ def get_query(query):
     return dict(zip(keys, values))
 
 
-def login(username, password):
-    logins = jload("creds.json")
-    ret = {"res": 0, "name": "noname"}
-    if username in logins['users']:
-        ret["res"] = 1
-        if password == logins['users'][username]['Password']:
-            ret["name"] = logins['users'][username]['Name']
-            ret["res"] = 2
-            if logins['users'][username]['Admin']:
-                ret["res"] = 3
-    return ret
-
-
 class CommunityConnectServer(BaseHTTPRequestHandler):
     def do_GET(self):
         p = self.path.split("?")[0]
@@ -77,30 +54,11 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/json")
         self.end_headers()
 
-        if p == "/login":
-            username = de(query_components["username"])
-            password = de(query_components["password"])
-            output = login(username, password)
-            self.wfile.write(bytes(json.dumps(output), "utf-8"))
-
-        if p == "/signup":
-            username = de(query_components["username"])
-            password = de(query_components["password"])
-            new_user = {"Password": "NOT FOUND", "Name": "NOT FOUND", "Admin": False}
-            privilege = login(username, password)["res"]
-            if privilege < 1:
-                name = de(query_components["name"])
-                logins = jload("creds.json")
-                new_user = {"Password": password, "Name": name, "Admin": False}
-                logins["users"][username] = new_user
-                jwrite("creds.json", logins)
-            self.wfile.write(bytes(json.dumps({"new user": new_user, "error": privilege}), "utf-8"))
-
         if p == "/supersecret":
             self.wfile.write(bytes("Nice work Vincent\n", "utf-8"))
 
         if p == "/search":
-            search_term = query_components(term)
+            search_term = query_components["term"]
             search_results = search.lookup(search_term)
             safe_search_results = {"return": str(search_results)}
             self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
@@ -119,9 +77,6 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/json")
         self.end_headers()
-        if self.path == "/addpost":
-            handle_image(post_data)
-            self.wfile.write(bytes(json.dumps({"success": 1}), "utf-8"))
 
 
 if __name__ == "__main__":
