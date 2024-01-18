@@ -8,7 +8,7 @@ import insta
 import search
 
 hostName = "glitchtech.top"
-serverPort = 9
+serverPort = 10
 
 
 def handle_image(img):
