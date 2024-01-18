@@ -1,9 +1,13 @@
+# Replit stuff
 poetry.lock
 pyproject.toml
 .upm/
 .replit
 .replitnix
 .nix
+
+# Server-side logs
+server/nohup.out
 
 # Miscellaneous
 *.class
