@@ -1,3 +1,10 @@
+GlitchTech Ports should be unnassigned by IANA!!!
+Please use any of the following
+4
+6 - Starlight
+8 - GlitchChat
+10, 12, 14, 15, 16, 24, 26, 28, 30, 32, 34, 35, 36, 40
+
 CHROME WILL BLOCK THESE PORTS
 I don't care about other browsers I only test in Chrome.
 
