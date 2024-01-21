@@ -6,6 +6,10 @@ pyproject.toml
 .replitnix
 .nix
 
+# VS Stuff
+.vscode/
+.vs/
+
 # Server-side logs
 server/nohup.out
 
