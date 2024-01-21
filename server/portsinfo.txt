@@ -1,12 +1,21 @@
-GlitchTech Ports should be unnassigned by IANA!!!
-Please use any of the following
-4
-6 - Starlight
-8 - GlitchChat
-10, 12, 14, 15, 16, 24, 26, 28, 30, 32, 34, 35, 36, 40
+// GlitchTech Ports should be unnassigned by IANA!!!
+// Refer to https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
+// Please use any of the following
+4,
+6,      // Starlight
+8,      // GlitchChat
+10,     // CommunityConnect
+12,
+14,
+15,
+16,
+24,
+26,
+28,
+30,
 
-CHROME WILL BLOCK THESE PORTS
-I don't care about other browsers I only test in Chrome.
+// CHROME WILL BLOCK THESE PORTS
+// I don't care about other browsers I only test in Chrome.
 
 1,      // tcpmux
 7,      // echo
