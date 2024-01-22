@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
               Center(
                   child: ElevatedButton(
                 onPressed: () async {
-                  bool isLoggedIn = true; //await login(userCont.text, passCont.text);
+                  bool isLoggedIn = await login(userCont.text, passCont.text);
                   if (isLoggedIn) {
                     // ignore: use_build_context_synchronously
                     Navigator.pushNamedAndRemoveUntil(context, "/main_page/", (Route route) => false);
@@ -125,9 +125,11 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 Future<bool> login(String user, String pass) async {
-  var path = join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'users.json');
-  var input = await File(path).readAsString();
-  var users = jsonDecode(input);
+  //var path = join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'users.json');
+  //var input = await File(path).readAsString();
+  var input = rootBundle.loadString('assets/users.json');
+  //var users = jsonDecode(input);
+  var users = await jsonDecode(input);
   for (var i = 0; i < users.length; i++) {
     if (users[i][0] == user) {
       if (users[i][1] == pass) {
