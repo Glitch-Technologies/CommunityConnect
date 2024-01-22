@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
               Center(
                   child: ElevatedButton(
                 onPressed: () async {
-                  bool isLoggedIn = true //await login(userCont.text, passCont.text);
+                  bool isLoggedIn = true; //await login(userCont.text, passCont.text);
                   if (isLoggedIn) {
                     // ignore: use_build_context_synchronously
                     Navigator.pushNamedAndRemoveUntil(context, "/main_page/", (Route route) => false);
