@@ -22,20 +22,48 @@ class _MainPageState extends State<MainPage> {
           width: double.infinity,
           height: double.infinity,
           color: lightSkyBlue,
-          child: FutureBuilder<List>(
-            future: compileBusinesses(),
-            builder:(context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                final List<Widget>data = snapshot.data as List<Widget>;
-                return SingleChildScrollView(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: data,
-                )
-              );
-              }
-              return const SizedBox(height: 25);
-            },
+          child: Column(
+            children: [
+              const SizedBox(height: 25),
+              SizedBox(
+                width: 450,
+                child: SearchAnchor(
+                  viewConstraints: const BoxConstraints(maxHeight: 200),
+                  builder: (BuildContext context, SearchController controller) {
+                    return SearchBar(
+                      controller: controller,
+                      onTap: () {
+                        controller.openView();
+                      },
+                      onChanged: (_) {
+                        controller.openView();
+                      },
+                      leading: const Icon(Icons.search),
+                    );
+                  },
+                  suggestionsBuilder:
+                      (BuildContext context, SearchController controller) {
+                        return List<ListTile>.generate(3, (index) { return const ListTile(title: Text("kys")); });
+                      },
+                ),
+              ),
+              Expanded(
+                child: FutureBuilder<List>(
+                  future: compileBusinesses(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      final List<Widget> data = snapshot.data as List<Widget>;
+                      return SingleChildScrollView(
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: data,
+                      ));
+                    }
+                    return const SizedBox(height: 25);
+                  },
+                ),
+              ),
+            ],
           )),
     );
   }
