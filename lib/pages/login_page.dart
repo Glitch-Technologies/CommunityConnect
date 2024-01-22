@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import '../assets/colors.dart';
 import 'dart:convert';
+import 'dart:io';
+import 'package:path/path.dart';
+
+import 'package:flutter/services.dart';
+
 
 bool isAdmin = false;
 
@@ -123,9 +128,12 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 Future<bool> login(String user, String pass) async {
-  var path = join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'users.json');
-  var input = await File(path).readAsString();
-  var users = jsonDecode(input);
+  // Removed local fileread in favor of built-in asset calls
+  //var path = join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'users.json');
+  //var input = await File(path).readAsString();
+  var input = await rootBundle.loadString('assets/users.json');
+  //var users = jsonDecode(input);
+  var users = await jsonDecode(input);
   for (var i = 0; i < users.length; i++) {
     if (users[i][0] == user) {
       if (users[i][1] == pass) {

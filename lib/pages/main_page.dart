@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import '../assets/colors.dart';
 import 'dart:convert';
+import 'dart:io';
+import 'package:path/path.dart';
+
+import 'package:flutter/services.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -20,53 +24,20 @@ class _MainPageState extends State<MainPage> {
           width: double.infinity,
           height: double.infinity,
           color: lightSkyBlue,
-          child: Column(
-            children: [
-              const SizedBox(height: 25),
-              SizedBox(
-                width: 450,
-                child: SearchAnchor(
-                  viewConstraints: const BoxConstraints(maxHeight: 200),
-                  builder:(context, controller) {
-                  return SearchBar(
-                    controller: controller,
-                    onTap: () {
-                      controller.openView();
-                    },
-                    onChanged: (_) {
-                      controller.openView();
-                    },
-                    onSubmitted: (String str) {},
-                    leading: const Icon(Icons.search),
-                 );
-                }, 
-                suggestionsBuilder:(context, controller) {
-                  return List<ListTile>.generate(3, (int index) {
-                    return const ListTile(
-                      title: Text("KYS"),
-                    );
-                  });
-                },),
-              ),
-              const SizedBox(height: 25),
-              Expanded(
-                child: FutureBuilder<List>(
-                  future: compileBusinesses(),
-                  builder:(context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      final List<Widget>data = snapshot.data as List<Widget>;
-                      return SingleChildScrollView(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: data,
-                      )
-                    );
-                    }
-                    return const SizedBox(height: 25);
-                  },
-                ),
-              ),
-            ],
+          child: FutureBuilder<List>(
+            future: compileBusinesses(),
+            builder:(context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                final List<Widget>data = snapshot.data as List<Widget>;
+                return SingleChildScrollView(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: data,
+                )
+              );
+              }
+              return const SizedBox(height: 25);
+            },
           )),
     );
   }
@@ -166,12 +137,16 @@ class BusinessWidget extends StatelessWidget {
 }
 
 Future<List<Widget>> compileBusinesses() async {
-  var path =
-      join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'orgs.json');
-  var input = await File(path).readAsString();
-  var orgs = jsonDecode(input);
-
+  // See changes to login routines fo details
+  //var path = join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'orgs.json');
+  //var input = await File(path).readAsString();
+  var input = await rootBundle.loadString('assets/orgs.json');
+  //var orgs = jsonDecode(input);
+  var orgs = await jsonDecode(input);
+  
   List<Widget> businessWList = [];
+
+  businessWList.add(const SizedBox(height: 25));
 
   for (var business in orgs["organizations"]) {
     businessWList.add(BusinessWidget(
@@ -185,8 +160,4 @@ Future<List<Widget>> compileBusinesses() async {
   }
 
   return businessWList;
-}
-
-void search(String term) {
-  
 }
