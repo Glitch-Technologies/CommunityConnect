@@ -24,6 +24,7 @@ server/nohup.out
 .history
 .svn/
 migrate_working_dir/
+pubspec.lock
 
 # IntelliJ related
 *.iml
