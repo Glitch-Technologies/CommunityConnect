@@ -27,37 +27,6 @@ class _MainPageState extends State<MainPage> {
                 width: 450,
                 child: SearchAnchor(
                   viewConstraints: const BoxConstraints(maxHeight: 200),
-<<<<<<< Updated upstream
-                  builder: (BuildContext context, SearchController controller) {
-                    return SearchBar(
-                      controller: controller,
-                      onTap: () {
-                        controller.openView();
-                      },
-                      onChanged: (_) {
-                        controller.openView();
-                      },
-                      leading: const Icon(Icons.search),
-                    );
-                  },
-                  suggestionsBuilder:
-                      (BuildContext context, SearchController controller) {
-                        return List<ListTile>.generate(3, (index) { return const ListTile(title: Text("kys")); });
-                      },
-                ),
-              ),
-              Expanded(
-                child: FutureBuilder<List>(
-                  future: compileBusinesses(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      final List<Widget> data = snapshot.data as List<Widget>;
-                      return SingleChildScrollView(
-                          child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: data,
-                      ));
-=======
                   builder:(context, controller) {
                   return SearchBar(
                     controller: controller,
@@ -69,7 +38,7 @@ class _MainPageState extends State<MainPage> {
                     },
                     onSubmitted: (String str) {},
                     leading: const Icon(Icons.search),
-                  );
+                 );
                 }, 
                 suggestionsBuilder:(context, controller) {
                   return List<ListTile>.generate(3, (int index) {
@@ -92,7 +61,6 @@ class _MainPageState extends State<MainPage> {
                     children: data,
                       )
                     );
->>>>>>> Stashed changes
                     }
                     return const SizedBox(height: 25);
                   },
