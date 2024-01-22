@@ -27,6 +27,7 @@ class _MainPageState extends State<MainPage> {
                 width: 450,
                 child: SearchAnchor(
                   viewConstraints: const BoxConstraints(maxHeight: 200),
+<<<<<<< Updated upstream
                   builder: (BuildContext context, SearchController controller) {
                     return SearchBar(
                       controller: controller,
@@ -56,6 +57,42 @@ class _MainPageState extends State<MainPage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: data,
                       ));
+=======
+                  builder:(context, controller) {
+                  return SearchBar(
+                    controller: controller,
+                    onTap: () {
+                      controller.openView();
+                    },
+                    onChanged: (_) {
+                      controller.openView();
+                    },
+                    onSubmitted: (String str) {},
+                    leading: const Icon(Icons.search),
+                  );
+                }, 
+                suggestionsBuilder:(context, controller) {
+                  return List<ListTile>.generate(3, (int index) {
+                    return const ListTile(
+                      title: Text("KYS"),
+                    );
+                  });
+                },),
+              ),
+              const SizedBox(height: 25),
+              Expanded(
+                child: FutureBuilder<List>(
+                  future: compileBusinesses(),
+                  builder:(context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      final List<Widget>data = snapshot.data as List<Widget>;
+                      return SingleChildScrollView(
+                      child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: data,
+                      )
+                    );
+>>>>>>> Stashed changes
                     }
                     return const SizedBox(height: 25);
                   },
@@ -168,8 +205,6 @@ Future<List<Widget>> compileBusinesses() async {
 
   List<Widget> businessWList = [];
 
-  businessWList.add(const SizedBox(height: 25));
-
   for (var business in orgs["organizations"]) {
     businessWList.add(BusinessWidget(
         name: business["name"],
@@ -182,4 +217,8 @@ Future<List<Widget>> compileBusinesses() async {
   }
 
   return businessWList;
+}
+
+void search(String term) {
+  
 }

@@ -8,7 +8,8 @@
         "name": "John Smith",
         "position": "CTO",
         "email": "john@techsphere.com"
-      }
+      },
+      "description": "TechSphere Inc. is a dynamic technology company dedicated to driving innovation and transforming businesses through cutting-edge solutions. Specializing in software development, artificial intelligence, and cloud computing, we deliver top-tier services that meet the evolving needs of our clients. With a passionate team of experts, TechSphere Inc. is committed to shaping a smarter and more connected future for businesses worldwide."
     },
     {
       "name": "GreenScape Alliance",
@@ -18,7 +19,8 @@
         "name": "Emily Green",
         "position": "Director",
         "email": "emily@greenscape.org"
-      }
+      },
+      "description": "GreenScape Alliance is a leading environmental company committed to fostering sustainability through eco-friendly landscaping and innovative solutions. Our focus on green practices and renewable energy ensures that businesses and communities can thrive in harmony with the planet."
     },
     {
       "name": "GlobalHealth Innovations",
@@ -28,7 +30,8 @@
         "name": "Dr. Mark Johnson",
         "position": "CEO",
         "email": "mark@globalhealth.com"
-      }
+      },
+      "description": "GlobalHealth Innovations is a forefront healthcare company dedicated to pioneering breakthrough solutions in the medical field. With a commitment to advancing patient care through cutting-edge technologies and innovative approaches, we strive to make a lasting impact on global health."
     },
     {
       "name": "FutureWorks Academy",
@@ -38,7 +41,8 @@
         "name": "Sarah Lee",
         "position": "Head of Partnerships",
         "email": "sarah@futureworks.org"
-      }
+      },
+      "description": "FutureWorks Academy is a forward-thinking education company focused on empowering learners with the skills and knowledge needed for the jobs of tomorrow. Through cutting-edge curriculum and hands-on learning experiences, we prepare students for success in an ever-evolving world, fostering a future where education meets innovation."
     },
     {
       "name": "UrbanBuilders Consortium",
@@ -48,7 +52,8 @@
         "name": "David Thompson",
         "position": "Project Manager",
         "email": "david@urbanbuilders.net"
-      }
+      },
+      "description": "UrbanBuilders Consortium is a leading construction company committed to shaping urban landscapes through excellence in design and construction. With a dedicated team of industry experts, we deliver innovative and sustainable building solutions, transforming visions into iconic structures that stand as testaments to our commitment to quality and craftsmanship."
     },
     {
       "name": "ArtsFusion Collective",
@@ -58,7 +63,8 @@
         "name": "Rachel Adams",
         "position": "Creative Director",
         "email": "rachel@artsfusion.org"
-      }
+      },
+      "description": "ArtsFusion Collective is a vibrant art company dedicated to fostering creativity and collaboration within the artistic community. Through curated events, exhibitions, and collaborative projects, we provide a platform for artists to showcase their diverse talents and contribute to a dynamic fusion of artistic expression."
     },
     {
       "name": "InvestWell Finance Group",
@@ -68,7 +74,8 @@
         "name": "Michael Reynolds",
         "position": "Senior Financial Analyst",
         "email": "michael@investwellgroup.com"
-      }
+      },
+      "description": "InvestWell Finance Group is a trusted financial advisement company committed to guiding clients towards sound investment strategies and financial prosperity. Our experienced team provides personalized solutions, ensuring that individuals and businesses can navigate the complexities of finance with confidence and achieve their long-term financial goals."
     },
     {
       "name": "CleanEco Solutions",
@@ -78,7 +85,8 @@
         "name": "Laura White",
         "position": "Marketing Manager",
         "email": "laura@cleaneco.com"
-      }
+      },
+      "description": "CleanEco Solutions is a leading sustainable cleaning products manufacturer dedicated to creating environmentally friendly and effective solutions for a cleaner world. Our commitment to eco-conscious formulations and responsible manufacturing practices ensures that our products contribute to both cleanliness and the well-being of the planet."
     },
     {
       "name": "YouthEmpower Network",
@@ -88,7 +96,8 @@
         "name": "Alex Johnson",
         "position": "Program Coordinator",
         "email": "alex@youthempower.org"
-      }
+      },
+      "description": "YouthEmpower Network is a dedicated nonprofit organization focused on empowering young individuals through education, mentorship, and skill-building programs. Committed to fostering personal and professional growth, we strive to create a network of empowered youth ready to make a positive impact on their communities and the world."
     },
     {
       "name": "TechBoost Innovations",
@@ -98,7 +107,8 @@
         "name": "Jessica Adams",
         "position": "Innovation Manager",
         "email": "jessica@techboost.com"
-      }
+      },
+      "description": "TechBoost Innovations is a dynamic tech company specializing in innovative solutions and cutting-edge advancements. With a focus on driving digital transformation, we empower businesses to thrive in the fast-paced world of technology through our bespoke software development and tech-driven services."
     },
     {
       "name": "FoodShare Foundation",
@@ -108,7 +118,8 @@
         "name": "Sam Patel",
         "position": "Volunteer Coordinator",
         "email": "sam@foodsharefoundation.org"
-      }
+      },
+      "description": "FoodShare Foundation is a dedicated hunger relief organization committed to eradicating food insecurity through community-driven initiatives. By facilitating the redistribution of surplus food and implementing sustainable solutions, we strive to ensure that no one goes hungry in our communities."
     },
     {
       "name": "SolarTech Solutions",
@@ -118,7 +129,8 @@
         "name": "Rachel Carter",
         "position": "Sales Manager",
         "email": "rachel@solar-techsolutions.com"
-      }
+      },
+      "description": "SolarTech Solutions is a leading renewable energy company specializing in cutting-edge solar technologies and sustainable energy solutions. With a focus on harnessing the power of the sun, we are dedicated to providing eco-friendly and cost-effective energy alternatives for a greener future."
     },
     {
       "name": "DataInsights Corporation",
@@ -128,7 +140,8 @@
         "name": "Steven Lewis",
         "position": "Chief Data Officer",
         "email": "steven@datainsights.co"
-      }
+      },
+      "description": "DataInsights Corporation is a premier data analytics firm at the forefront of transforming raw data into actionable insights for businesses. With advanced analytics tools and a commitment to precision, we empower organizations to make informed decisions, optimize performance, and stay ahead in today's data-driven landscape."
     },
     {
       "name": "GlobalEducation Exchange",
@@ -138,7 +151,8 @@
         "name": "Maria Rodriguez",
         "position": "Program Director",
         "email": "maria@globaledexchange.org"
-      }
+      },
+      "description": "GlobalEducation Exchange is a leading student exchange program dedicated to fostering cultural understanding and international collaboration. Through carefully curated programs, we provide students with enriching experiences that transcend borders, creating global citizens equipped with a broader perspective on the world."
     },
     {
       "name": "HealthFirst Clinics",
@@ -148,7 +162,8 @@
         "name": "Dr. Emily Davis",
         "position": "Medical Director",
         "email": "emily@healthfirstclinics.com"
-      }
+      },
+      "description": ""
     },
     {
       "name": "EcoHarvest Farms",
