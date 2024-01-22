@@ -4,12 +4,19 @@
 */
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'dart:async';
 
 class Server {
   static Future<bool> tryConnect() async {
     String request = buildRequest("supersecret", {});
-    print(fetchData(request, json: false));
-    return false;
+    var response = await fetchData(request, json: false).timeout(
+        Duration(seconds: 5),
+        onTimeout: () => throw TimeoutException("timeout"));
+    if (response is TimeoutException) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   static String buildRequest(String path, Map query) {
