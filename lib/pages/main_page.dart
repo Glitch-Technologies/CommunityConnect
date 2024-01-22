@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../assets/colors.dart';
 import 'dart:convert';
-import 'dart:io';
-import 'package:path/path.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
