@@ -7,6 +7,12 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 
 class Server {
+  static Future<dynamic> search(String term) async {
+    String request = buildRequest("search", {"term": term});
+    var response = await fetchData(request);
+    return response;
+  }
+
   static Future<bool> tryConnect() async {
     String request = buildRequest("supersecret", {});
     var response = await fetchData(request, json: false).timeout(
@@ -30,7 +36,7 @@ class Server {
     return url;
   }
 
-  static Future<String> fetchData(String request, {bool json = true}) async {
+  static Future<dynamic> fetchData(String request, {bool json = true}) async {
     var response = await http.get(Uri.parse(request));
     if (response.statusCode == 200) {
       dynamic data;
