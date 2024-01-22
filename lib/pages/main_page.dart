@@ -135,11 +135,14 @@ class BusinessWidget extends StatelessWidget {
 }
 
 Future<List<Widget>> compileBusinesses() async {
-  var path =
+  // See changes to login routines fo details
+  //var path =
       join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'orgs.json');
-  var input = await File(path).readAsString();
-  var orgs = jsonDecode(input);
-
+  //var input = await File(path).readAsString();
+  var input = await rootBundle.loadString('assets/orgs.json');
+  //var orgs = jsonDecode(input);
+  var orgs = await json.decode(input);
+  
   List<Widget> businessWList = [];
 
   businessWList.add(const SizedBox(height: 25));
