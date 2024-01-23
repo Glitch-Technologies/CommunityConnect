@@ -61,12 +61,11 @@ class _MainPageState extends State<MainPage> {
                     onSubmitted: (value) {
                       search(value);
                     },
-                  )
-              ), 
+                  )),
               //This bit only causes problems
               ElevatedButton(
                 onPressed: () {
-                  search("john")
+                  search("john");
                 },
                 child: Text('Click me'),
               ),
