@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../assets/colors.dart';
 import 'dart:convert';
-
+import "../api.dart";
 import 'package:flutter/services.dart';
 
 class MainPage extends StatefulWidget {
@@ -12,6 +12,28 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
+  final searchController = SearchController();
+  List<Widget> businessWidgets = [Text("hi")];
+
+  search(String term) async {
+    businessWidgets = [];
+    var orgs = await Server.search(term);
+    if (orgs != null) {
+      for (var business in orgs["organizations"]) {
+        businessWidgets.add(BusinessWidget(
+          name: business["name"],
+          type: business["type"],
+          description: business["description"],
+          resources: business["resources"],
+          contact: business["contact"]["email"]));
+        businessWidgets.add(const SizedBox(height: 25));
+      }
+    }
+
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,47 +49,22 @@ class _MainPageState extends State<MainPage> {
               const SizedBox(height: 25),
               SizedBox(
                 width: 450,
-                child: SearchAnchor(
-                  viewConstraints: BoxConstraints(maxHeight: 200),
-                  builder: (context, controller) {
-                    return SearchBar(
-                      controller: controller,
-                      onTap: () {
-                        controller.openView();
-                      },
-                      onChanged: (_) {
-                        controller.openView();
-                      },
-                      leading: const Icon(Icons.search),
-                    );
-                }, 
-                suggestionsBuilder: (context, controller) {
-                  return List<ListTile>.generate(5, (int index) {
-                    return ListTile(
-                      title: Text("kys"),
-                    );
-                  });
-                },
-                ),
+                child: TextField(
+                  controller: searchController,
+                  decoration: InputDecoration(
+                  hintText: 'Search...',
+                  hintStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  onSubmitted: (value) {
+                    search(value);
+                  },
+                )
               ),
               const SizedBox(height: 25),
-              Expanded(
-                child: FutureBuilder<List>(
-                  future: compileBusinesses(),
-                  builder:(context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      final List<Widget>data = snapshot.data as List<Widget>;
-                      return SingleChildScrollView(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: data,
-                      )
-                    );
-                    }
-                    return const SizedBox(height: 25);
-                  },
-                ),
-              ),
             ],
           )),
     );
@@ -167,13 +164,17 @@ class BusinessWidget extends StatelessWidget {
   }
 }
 
-Future<List<Widget>> compileBusinesses() async {
+compileBusinesses() async {
   // See changes to login routines fo details
   //var path = join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'orgs.json');
   //var input = await File(path).readAsString();
   var input = await rootBundle.loadString('assets/orgs.json');
   //var orgs = jsonDecode(input);
   var orgs = await jsonDecode(input);
+  return orgs;
+}
+
+Future<List<Widget>> createBusinesses(var orgs) async {
   
   List<Widget> businessWList = [];
 
@@ -190,3 +191,4 @@ Future<List<Widget>> compileBusinesses() async {
 
   return businessWList;
 }
+

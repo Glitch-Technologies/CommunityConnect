@@ -3,6 +3,7 @@
     {
       "name": "TechSphere Inc.",
       "type": "Technology Consultancy Firm",
+      "genre": "Technology",
       "resources": "Cutting-edge software development tools and a team of 50 engineers",
       "contact": {
         "name": "John Smith",
@@ -14,6 +15,7 @@
     {
       "name": "GreenScape Alliance",
       "type": "Environmental NGO",
+      "genre": "Technology",
       "resources": "Network of 500 volunteers, environmental research lab",
       "contact": {
         "name": "Emily Green",
@@ -25,6 +27,7 @@
     {
       "name": "GlobalHealth Innovations",
       "type": "Healthcare Solutions Provider",
+      "genre": "Health",
       "resources": "Medical research facilities, 24/7 medical helpline",
       "contact": {
         "name": "Dr. Mark Johnson",
@@ -36,6 +39,7 @@
     {
       "name": "FutureWorks Academy",
       "type": "Education & Training Institute",
+      "genre": "Education",
       "resources": "Online learning platform, expert instructors",
       "contact": {
         "name": "Sarah Lee",
