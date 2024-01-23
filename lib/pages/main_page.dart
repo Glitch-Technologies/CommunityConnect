@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
     setState(() {});
   }
 
-  merch(String term) async {
+  Future<String> merch(String term) async {
     businessWidgets.add(BusinessWidget(
         name: "name",
         type: "type",
@@ -42,6 +42,7 @@ class _MainPageState extends State<MainPage> {
         contact: "contact email"));
     businessWidgets.add(const SizedBox(height: 25));
     setState(() {});
+    return "success";
   }
 
   @override
