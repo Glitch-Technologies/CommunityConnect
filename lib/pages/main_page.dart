@@ -33,6 +33,17 @@ class _MainPageState extends State<MainPage> {
     setState(() {});
   }
 
+  merch(String term) async {
+    businessWidgets.add(BusinessWidget(
+        name: "name",
+        type: "type",
+        description: "description",
+        resources: "resources",
+        contact: "contact email"));
+    businessWidgets.add(const SizedBox(height: 25));
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +76,7 @@ class _MainPageState extends State<MainPage> {
               //This bit only causes problems
               ElevatedButton(
                 onPressed: () {
-                  search("john");
+                  merch("john");
                 },
                 child: Text('Click me'),
               ),
