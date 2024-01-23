@@ -12,7 +12,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   final searchController = SearchController();
   List<Widget> businessWidgets = [Text("hi")];
 
@@ -22,11 +21,11 @@ class _MainPageState extends State<MainPage> {
     if (orgs != null) {
       for (var business in orgs["organizations"]) {
         businessWidgets.add(BusinessWidget(
-          name: business["name"],
-          type: business["type"],
-          description: business["description"],
-          resources: business["resources"],
-          contact: business["contact"]["email"]));
+            name: business["name"],
+            type: business["type"],
+            description: business["description"],
+            resources: business["resources"],
+            contact: business["contact"]["email"]));
         businessWidgets.add(const SizedBox(height: 25));
       }
     }
@@ -48,21 +47,28 @@ class _MainPageState extends State<MainPage> {
             children: [
               const SizedBox(height: 25),
               SizedBox(
-                width: 450,
-                child: TextField(
-                  controller: searchController,
-                  decoration: InputDecoration(
-                  hintText: 'Search...',
-                  hintStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontStyle: FontStyle.italic,
+                  width: 450,
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: 'Search...',
+                      hintStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
-                  ),
-                  onSubmitted: (value) {
-                    search(value);
-                  },
-                )
+                    onSubmitted: (value) {
+                      search(value);
+                    },
+                  )
+              ), 
+              //This bit only causes problems
+              ElevatedButton(
+                onPressed: () {
+                  search("john")
+                },
+                child: Text('Click me'),
               ),
               const SizedBox(height: 25),
             ],
@@ -175,7 +181,6 @@ compileBusinesses() async {
 }
 
 Future<List<Widget>> createBusinesses(var orgs) async {
-  
   List<Widget> businessWList = [];
 
   for (var business in orgs["organizations"]) {
@@ -191,4 +196,3 @@ Future<List<Widget>> createBusinesses(var orgs) async {
 
   return businessWList;
 }
-
