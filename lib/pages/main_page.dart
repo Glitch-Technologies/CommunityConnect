@@ -15,7 +15,7 @@ class _MainPageState extends State<MainPage> {
   final searchController = SearchController();
   List<Widget> businessWidgets = [Text("hi")];
 
-  search(String term) async {
+  Future<void> search(String term) async {
     businessWidgets = [];
     var orgs = await Server.search(term);
     if (orgs != null) {
@@ -70,13 +70,13 @@ class _MainPageState extends State<MainPage> {
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                    onSubmitted: (value) {
+                    onSubmitted: (value) async {
                       search(value);
                     },
                   )),
               //This bit only causes problems
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   merch("john");
                 },
                 child: Text('Click me'),
