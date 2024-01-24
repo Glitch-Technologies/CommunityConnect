@@ -1,7 +1,7 @@
 import json
 from main import jload
 
-data = jload("orgs.json")
+data = jload("orgs2.json")
 
 
 # GPT-made search algo for dataset
