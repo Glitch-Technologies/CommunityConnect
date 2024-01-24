@@ -60,7 +60,7 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
         if p == "/search":
             search_term = query_components["term"]
             search_results = search.lookup(search_term)
-            safe_search_results = {"return": str(search_results)}
+            safe_search_results = {"return": search_results}
             self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
 
 
