@@ -25,6 +25,7 @@ server/nohup.out
 .svn/
 migrate_working_dir/
 pubspec.lock
+notrack
 
 # IntelliJ related
 *.iml
