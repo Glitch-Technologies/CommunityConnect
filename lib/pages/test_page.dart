@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 
-class TestPage extends StatelessWidget {
+class TestPage extends StatefulWidget {
+    @override
+    _TestPageState createState() => _TestPageState();
+}
+
+class _TestPageState extends State<TestPage> {
+    List<String> anagrams = [];
+
     List<String> generateAnagrams(String word) {
         List<String> anagrams = [];
         _generateAnagramsHelper(word.split(''), 0, anagrams);
         return anagrams;
     }
 
-    void _generateAnagramsHelper(List<String> word, int index, List<String> anagrams) {
+    void _generateAnagramsHelper(
+            List<String> word, int index, List<String> anagrams) {
         if (index == word.length - 1) {
             anagrams.add(word.join(''));
             return;
@@ -36,12 +44,13 @@ class TestPage extends StatelessWidget {
                             hintText: 'Search...',
                         ),
                         onChanged: (value) {
-                            List<String> anagrams = generateAnagrams(value);
-                            List<Widget> anagramBlocks = anagrams.map((anagram) => Text(anagram)).toList();
-                            return Column(
-                                children: anagramBlocks,
-                            );
+                            setState(() {
+                                anagrams = generateAnagrams(value);
+                            });
                         },
+                    ),
+                    Column(
+                        children: anagrams.map((anagram) => Text(anagram)).toList(),
                     ),
                     Align(
                         alignment: Alignment.bottomRight,
