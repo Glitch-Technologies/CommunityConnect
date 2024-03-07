@@ -49,10 +49,45 @@ class _TestPageState extends State<TestPage> {
                             });
                         },
                     ),
-                    Column(
-                        children: anagrams.map((anagram) => Text(anagram)).toList(),
+                    Expanded(
+                        child: SingleChildScrollView(
+                            child: Column(
+                                children: anagrams.map((anagram) => Container(
+                                    margin: EdgeInsets.symmetric(vertical: 4),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(color: Colors.black),
+                                    ),
+                                    child: Padding(
+                                        padding: EdgeInsets.all(8),
+                                        child: Text(anagram),
+                                    ),
+                                )).toList(),
+                            ),
+                        ),
                     ),
                     Align(
+                        alignment: Alignment.bottomRight,
+                        child: Padding(
+                            padding: EdgeInsets.only(bottom: 50, right: 50),
+                            child: ElevatedButton.icon(
+                                onPressed: () {
+                                    // Show help popup logic here
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                            return AlertDialog(
+                                                content: Text('Help not found'),
+                                            );
+                                        },
+                                    );
+                                },
+                                icon: Icon(Icons.help_outline),
+                                label: Text('Help'),
+                            ),
+                        ),
+                    ),
+                        //margin: EdgeInsets.only(bottom: 5, right: 5),
                         alignment: Alignment.bottomRight,
                         child: ElevatedButton.icon(
                             onPressed: () {
