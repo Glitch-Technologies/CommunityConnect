@@ -50,6 +50,11 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: midnightGreen,
+        title: Text("CommunityConnect"),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.question_mark, color: richBlack), tooltip: "Help"),
+          SizedBox(width: 75),
+        ]
       ),
       body: Container(
           width: double.infinity,
@@ -82,6 +87,13 @@ class _MainPageState extends State<MainPage> {
                 child: Text('Click me'),
               ),
               const SizedBox(height: 25),
+              FutureBuilder(future: compileBusinesses(), builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  return Expanded(child: SingleChildScrollView(child: Column(children: snapshot.data)));
+                } else {
+                  return SizedBox();
+                }
+              })
             ],
           )),
     );
@@ -188,7 +200,7 @@ compileBusinesses() async {
   var input = await rootBundle.loadString('assets/orgs.json');
   //var orgs = jsonDecode(input);
   var orgs = await jsonDecode(input);
-  return orgs;
+  return createBusinesses(orgs);
 }
 
 Future<List<Widget>> createBusinesses(var orgs) async {
