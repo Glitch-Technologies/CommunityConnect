@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/Spamuel/Documents/CommunityConnect/windows"
+    "cmake.sourceDirectory": "C:/Users/Spamuel/Documents/CommunityConnect/windows",
+    "cmake.configureOnOpen": false
 }
