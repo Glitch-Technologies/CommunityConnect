@@ -1,5 +1,7 @@
 import 'package:communityconnect/pages/login_page.dart';
 import 'package:communityconnect/pages/main_page.dart';
+import 'package:communityconnect/pages/test_page.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
       home: const LoginPage(),
       routes: {
         "/login_page/": (context) => const LoginPage(),
-        "/main_page/": (context) => const MainPage()
+        "/main_page/": (context) => const MainPage(),
+        "/test_page/": (context) => const TestPage()
       },
     );
   }
