@@ -12,6 +12,9 @@ class Server {
     var response = await fetchData(request);
     return response;
   }
+  static String test() {
+    return "true";
+  }
 
   static Future<bool> tryConnect() async {
     String request = buildRequest("supersecret", {});
