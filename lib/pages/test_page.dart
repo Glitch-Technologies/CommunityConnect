@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import '../assets/colors.dart';
+import 'dart:convert';
+import "../api.dart";
+import 'package:flutter/services.dart';
 
 class TestPage extends StatefulWidget {
     @override
@@ -35,78 +39,106 @@ class _TestPageState extends State<TestPage> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: Text('Test Page'),
+                backgroundColor: midnightGreen,
+                title: Text('Main Page'),
             ),
-            body: Column(
-                children: [
-                    TextField(
-                        decoration: InputDecoration(
-                            hintText: 'Search...',
-                        ),
-                        onChanged: (value) {
-                            setState(() {
-                                anagrams = generateAnagrams(value);
-                            });
-                        },
-                    ),
-                    Expanded(
-                        child: SingleChildScrollView(
-                            child: Column(
-                                children: anagrams.map((anagram) => Container(
-                                    margin: EdgeInsets.symmetric(vertical: 4),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(color: Colors.black),
-                                    ),
-                                    child: Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: Text(anagram),
-                                    ),
-                                )).toList(),
-                            ),
-                        ),
-                    ),
-                    Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                            padding: EdgeInsets.only(bottom: 50, right: 50),
-                            child: ElevatedButton.icon(
-                                onPressed: () {
-                                    // Show help popup logic here
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                            return AlertDialog(
-                                                content: Text('Help not found'),
-                                            );
+            body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: lightSkyBlue,
+                child: Column(
+                    children: [
+                        Center(
+                            child: Padding(
+                                padding: EdgeInsets.only(top: 16, bottom: 8),
+                                child: SizedBox(
+                                    width: 200,
+                                    child: TextField(
+                                        textAlign: TextAlign.center,
+                                        decoration: InputDecoration(
+                                            hintText: 'Search...',
+                                            hintStyle: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontStyle: FontStyle.italic,
+                                            ),
+                                        ),
+                                        onChanged: (value) {
+                                            setState(() {
+                                                anagrams = generateAnagrams(value);
+                                            });
                                         },
-                                    );
-                                },
-                                icon: Icon(Icons.help_outline),
-                                label: Text('Help'),
+                                    ),
+                                ),
                             ),
                         ),
-                    ),
-                        //margin: EdgeInsets.only(bottom: 5, right: 5),
-                        alignment: Alignment.bottomRight,
-                        child: ElevatedButton.icon(
-                            onPressed: () {
-                                // Show help popup logic here
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                        return AlertDialog(
-                                            content: Text('Help not found'),
-                                        );
-                                    },
-                                );
-                            },
-                            icon: Icon(Icons.help_outline),
-                            label: Text('Help'),
+                        Expanded(
+                            child: SingleChildScrollView(
+                                child: Column(
+                                    children: anagrams.map((anagram) => Container(
+                                        margin: EdgeInsets.symmetric(vertical: 4),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(8),
+                                            border: Border.all(color: Colors.black),
+                                        ),
+                                        child: Padding(
+                                            padding: EdgeInsets.all(8),
+                                            child: Text(anagram),
+                                        ),
+                                    )).toList(),
+                                ),
+                            ),
                         ),
-                    ),
-                ],
-            ),
-        );
-    }
-}
+                        Stack(
+                            children: [
+                                Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Padding(
+                                        padding: EdgeInsets.only(bottom: 10, left: 10),
+                                        child: ElevatedButton.icon(
+                                            onPressed: () async {
+                                                // Button logic here
+                                                String formattedResponse = await Server.tryConnect().then((value) => value.toString());
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext context) {
+                                                        return AlertDialog(
+                                                            content: Text(formattedResponse),
+                                                        );
+                                                    },
+                                                );
+                                            },
+                                            icon: Icon(Icons.flash_on),
+                                            label: Text('Connection Test'),
+                                        ),
+                                    ),
+                                ),      
+                                Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Padding(
+                                        padding: EdgeInsets.only(bottom: 10, right: 10),
+                                        child: ElevatedButton.icon(
+                                            onPressed: () {
+                                                // Show help popup logic here
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext context) {
+                                                        return AlertDialog(
+                                                            content: Text('Help not found'),
+                                                        );
+                                                    },
+                                                );
+                                            },
+                                            icon: Icon(Icons.help_outline),
+                                            label: Text('Help'),
+                                        ),
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ],
+                ),
+            ),  
+        );  
+    }   
+}   
