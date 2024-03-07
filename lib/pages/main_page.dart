@@ -77,7 +77,7 @@ class _MainPageState extends State<MainPage> {
               //This bit only causes problems
               ElevatedButton(
                 onPressed: () async {
-                  merch("john");
+                  merch("laremy");
                 },
                 child: Text('Click me'),
               ),
