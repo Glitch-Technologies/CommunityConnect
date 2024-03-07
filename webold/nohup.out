@@ -1,0 +1,20 @@
+127.0.0.1 - - [06/Mar/2024 20:36:13] code 501, message Unsupported method ('CONNECT')
+127.0.0.1 - - [06/Mar/2024 20:36:13] "CONNECT google.com:443 HTTP/1.1" 501 -
+127.0.0.1 - - [06/Mar/2024 20:36:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2024 20:36:31] code 404, message File not found
+127.0.0.1 - - [06/Mar/2024 20:36:31] "GET /flutter.js HTTP/1.1" 404 -
+127.0.0.1 - - [06/Mar/2024 20:36:32] "GET /favicon.png HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2024 20:36:38] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/Mar/2024 20:36:39] code 404, message File not found
+127.0.0.1 - - [06/Mar/2024 20:36:39] "GET /flutter.js HTTP/1.1" 404 -
+127.0.0.1 - - [06/Mar/2024 20:37:47] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/Mar/2024 20:37:47] code 404, message File not found
+127.0.0.1 - - [06/Mar/2024 20:37:47] "GET /flutter.js HTTP/1.1" 404 -
+127.0.0.1 - - [06/Mar/2024 20:41:42] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/Mar/2024 20:41:42] code 404, message File not found
+127.0.0.1 - - [06/Mar/2024 20:41:42] "GET /flutter.js HTTP/1.1" 404 -
+127.0.0.1 - - [06/Mar/2024 20:41:47] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [06/Mar/2024 20:41:47] code 404, message File not found
+127.0.0.1 - - [06/Mar/2024 20:41:47] "GET /flutter.js HTTP/1.1" 404 -
+127.0.0.1 - - [06/Mar/2024 21:11:05] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [06/Mar/2024 21:11:07] "POST /goform/set_LimitClient_cfg HTTP/1.1" 501 -
