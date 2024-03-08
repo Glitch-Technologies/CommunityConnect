@@ -14,6 +14,13 @@ class BusinessPage extends StatefulWidget {
 }
 
 class _BusinessPageState extends State<BusinessPage> {
+  bool isEditable = false;
+
+  changeEdit() {
+    isEditable = !isEditable;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     var businessDic;
@@ -32,92 +39,211 @@ class _BusinessPageState extends State<BusinessPage> {
           width: double.infinity,
           height: double.infinity,
           color: lightSkyBlue,
-          child: Center(
-              child: SizedBox(
-            width: 500,
-            height: 500,
-            child: Container(
-              decoration: BoxDecoration(
-                color: verdigris,
-                borderRadius: BorderRadius.circular(20.0),
+          child: Row(
+            children: [
+              Expanded(child: SizedBox()),
+              Center(
+                  child: SizedBox(
+                width: 500,
+                height: 500,
+                child: Container(
+                    decoration: BoxDecoration(
+                      color: verdigris,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: FutureBuilder(
+                        future: compileBusiness(businessNum),
+                        builder: ((context, snapshot) {
+                          if (snapshot.hasData) {
+                            businessDic = snapshot.data;
+                            var resources = businessDic["resources"];
+                            var contact = businessDic["contact"]["email"];
+                            if (!isEditable) {
+                              return Center(
+                                child: SizedBox(
+                                    height: 440,
+                                    width: 460,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          height: 60,
+                                          child: Text(
+                                            businessDic["name"],
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                color: richBlack, fontSize: 40),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        SizedBox(
+                                          height: 40,
+                                          child: Text(
+                                            businessDic["type"],
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                color: richBlack, fontSize: 25),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 60),
+                                        SizedBox(
+                                          height: 120,
+                                          child: Text(
+                                            businessDic["description"],
+                                            maxLines: 5,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                color: richBlack, fontSize: 18),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 20),
+                                        SizedBox(
+                                          height: 60,
+                                          child: Text(
+                                            "Resources: $resources",
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            style: TextStyle(
+                                                color: richBlack, fontSize: 18),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 20),
+                                        SizedBox(
+                                          height: 40,
+                                          child: Text(
+                                            "Contact Info: $contact",
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            style: TextStyle(
+                                                color: richBlack, fontSize: 18),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                              );
+                            } else {
+                              return Center(
+                                  child: SizedBox(
+                                height: 440,
+                                width: 460,
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 60,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: businessDic["name"],
+                                        ),
+                                        style: TextStyle(
+                                          fontSize: 40,
+                                          color: richBlack,
+                                        ),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    SizedBox(
+                                      height: 40,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: businessDic["type"],
+                                        ),
+                                        style: TextStyle(
+                                          fontSize: 25,
+                                          color: richBlack,
+                                        ),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 60,
+                                    ),
+                                    SizedBox(
+                                      height: 120,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: businessDic["description"],
+                                        ),
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: richBlack,
+                                        ),
+                                        maxLines: 5,
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 60,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: businessDic["resources"],
+                                        ),
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: richBlack,
+                                        ),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 40,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: businessDic["contact"]
+                                              ["email"],
+                                        ),
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: richBlack,
+                                        ),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ));
+                            }
+                          }
+                          return SizedBox();
+                        }))),
+              )),
+              Expanded(
+                child: SizedBox(
+                  child: Center(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 50,
+                        ),
+                        IconButton(
+                          onPressed: changeEdit(),
+                          icon: Icon(
+                            Icons.edit,
+                            color: richBlack,
+                          ),
+                          tooltip: "Edit",
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              child: FutureBuilder(
-                future: compileBusiness(businessNum),
-                builder: ((context, snapshot) {
-                  if (snapshot.hasData) {
-                    businessDic = snapshot.data;
-                    var resources = businessDic["resources"];
-                    var contact = businessDic["contact"]["email"];
-                    return Center(
-                      child: SizedBox(
-                        height: 440,
-                        width: 460,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 60,
-                              child: Text(
-                                businessDic["name"],
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(color: richBlack, fontSize: 40),
-                                textAlign: TextAlign.start,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            SizedBox(
-                              height: 40,
-                              child: Text(
-                                businessDic["type"],
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(color: richBlack, fontSize: 25),
-                                textAlign: TextAlign.start,
-                              ),
-                            ),
-                            const SizedBox(height: 60),
-                            SizedBox(
-                              height: 120,
-                              child: Text(
-                                businessDic["description"],
-                                maxLines: 5,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(color: richBlack, fontSize: 18),
-                                textAlign: TextAlign.start,
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            SizedBox(
-                              height: 60,
-                              child: Text(
-                                "Resources: $resources",
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: TextStyle(color: richBlack, fontSize: 18),
-                                textAlign: TextAlign.start,
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            SizedBox(
-                              height: 40,
-                              child: Text(
-                                "Contact Info: $contact",
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: TextStyle(color: richBlack, fontSize: 18),
-                                textAlign: TextAlign.start,
-                              ),
-                            )
-                          ],
-                        )),
-                    );
-                  }
-                  return SizedBox();
-                }
-              ))
-            ),
-          )),
+            ],
+          ),
         ));
   }
 }
@@ -125,5 +251,5 @@ class _BusinessPageState extends State<BusinessPage> {
 compileBusiness(int i) async {
   var input = await rootBundle.loadString('assets/orgs.json');
   var orgs = await jsonDecode(input);
-  return orgs["organizations"][i-1];
+  return orgs["organizations"][i - 1];
 }
