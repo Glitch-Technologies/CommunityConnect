@@ -26,6 +26,7 @@ server/nohup.out
 migrate_working_dir/
 pubspec.lock
 notrack
+sam.code-profile
 
 # IntelliJ related
 *.iml
