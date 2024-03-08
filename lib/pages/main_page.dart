@@ -15,12 +15,17 @@ class _MainPageState extends State<MainPage> {
   final searchController = SearchController();
   List<Widget> businessWidgets = [Text("hi")];
 
+  void openBusiness(int i) {
+    print("yolo");
+  }
+
   Future<void> search(String term) async {
     businessWidgets = [];
     var orgs = await Server.search(term);
     if (orgs != null) {
       for (var business in orgs["organizations"]) {
         businessWidgets.add(BusinessWidget(
+            number: business["number"],
             name: business["name"],
             type: business["type"],
             description: business["description"],
@@ -35,11 +40,12 @@ class _MainPageState extends State<MainPage> {
 
   Future<String> merch(String term) async {
     businessWidgets.add(BusinessWidget(
+        number: 0,
         name: "name",
         type: "type",
         description: "description",
         resources: "resources",
-        contact: "contact email"));
+        contact: "contact email",));
     businessWidgets.add(const SizedBox(height: 25));
     setState(() {});
     return "success";
@@ -87,7 +93,7 @@ class _MainPageState extends State<MainPage> {
                 child: Text('Click me'),
               ),
               const SizedBox(height: 25),
-              FutureBuilder(future: compileBusinesses(), builder: (BuildContext context, AsyncSnapshot snapshot) {
+              FutureBuilder(future: compileBusinesses((int i) {openBusiness(i);}), builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   return Expanded(child: SingleChildScrollView(child: Column(children: snapshot.data)));
                 } else {
@@ -101,21 +107,26 @@ class _MainPageState extends State<MainPage> {
 }
 
 class BusinessWidget extends StatelessWidget {
-  final name;
-  final type;
-  final description;
-  final resources;
-  final contact;
-  final image;
+  final int number;
+  final String name;
+  final String type;
+  final String description;
+  final String resources;
+  final String contact;
+  final Image? image;
+  final onPressed;
 
-  const BusinessWidget(
+  BusinessWidget(
       {super.key,
+      required this.number,
       required this.name,
       required this.type,
       required this.description,
       required this.resources,
       required this.contact,
-      this.image});
+      this.image,
+      this.onPressed,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +140,7 @@ class BusinessWidget extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     )),
-                onPressed: () {},
+                onPressed: () {onPressed(number);},
                 child: SizedBox(
                     height: 220,
                     width: 430,
@@ -193,27 +204,30 @@ class BusinessWidget extends StatelessWidget {
   }
 }
 
-compileBusinesses() async {
+compileBusinesses(var open) async {
   // See changes to login routines fo details
   //var path = join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'orgs.json');
   //var input = await File(path).readAsString();
   var input = await rootBundle.loadString('assets/orgs.json');
   //var orgs = jsonDecode(input);
   var orgs = await jsonDecode(input);
-  return createBusinesses(orgs);
+  return createBusinesses(orgs, (int i) {open(i);});
 }
 
-Future<List<Widget>> createBusinesses(var orgs) async {
+Future<List<Widget>> createBusinesses(var orgs, var open) async {
   List<Widget> businessWList = [];
 
   for (var business in orgs["organizations"]) {
     businessWList.add(BusinessWidget(
+        number: business["number"],
         name: business["name"],
         type: business["type"],
         description:
             "This is a very big business. It is very big. It is known for its largeness and humongosity. Very big. Like super duper big, like it is just so big. AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
         resources: business["resources"],
-        contact: business["contact"]["email"]));
+        contact: business["contact"]["email"],
+        onPressed: (int i) {open(i);}
+        ));
     businessWList.add(const SizedBox(height: 25));
   }
 
