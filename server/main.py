@@ -2,6 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from urllib.parse import urlparse
 import os
+import base64
 
 # import insta
 # For instagram API, only activate after configuring session.json(See Starlight)
@@ -10,6 +11,14 @@ import search
 
 hostName = "glitchtech.top"
 serverPort = 10
+
+#Modern URL-safe strings. See GlitchChat.
+def de(input_str):
+  return base64.urlsafe_b64decode(input_str.replace('~', '=')).decode("utf-8")
+#Kept for legacy. Server will hopefully never need to encode. 
+def en(input):
+  return base64.urlsafe_b64encode(bytes(input, "utf-8")).replace(b'=', b'~')
+
 
 
 

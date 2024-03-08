@@ -7,6 +7,9 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 
 class Server {
+
+  //TODO: Write encode operation in dart. See server/main.py:encode
+
   static Future<dynamic> search(String term) async {
     String request = buildRequest("search", {"term": term});
     var response = await fetchData(request);
