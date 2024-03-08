@@ -15,12 +15,17 @@ class _MainPageState extends State<MainPage> {
   final searchController = SearchController();
   List<Widget> businessWidgets = [Text("hi")];
 
+  void openBusiness() {
+    print("yolo");
+  }
+
   Future<void> search(String term) async {
     businessWidgets = [];
     var orgs = await Server.search(term);
     if (orgs != null) {
       for (var business in orgs["organizations"]) {
         businessWidgets.add(BusinessWidget(
+            number: 0,
             name: business["name"],
             type: business["type"],
             description: business["description"],
@@ -35,11 +40,12 @@ class _MainPageState extends State<MainPage> {
 
   Future<String> merch(String term) async {
     businessWidgets.add(BusinessWidget(
+        number: 0,
         name: "name",
         type: "type",
         description: "description",
         resources: "resources",
-        contact: "contact email"));
+        contact: "contact email",));
     businessWidgets.add(const SizedBox(height: 25));
     setState(() {});
     return "success";
@@ -101,21 +107,24 @@ class _MainPageState extends State<MainPage> {
 }
 
 class BusinessWidget extends StatelessWidget {
-  final name;
-  final type;
-  final description;
-  final resources;
-  final contact;
-  final image;
+  final int number;
+  final String name;
+  final String type;
+  final String description;
+  final String resources;
+  final String contact;
+  final Image? image;
 
-  const BusinessWidget(
+  BusinessWidget(
       {super.key,
+      required this.number,
       required this.name,
       required this.type,
       required this.description,
       required this.resources,
       required this.contact,
-      this.image});
+      this.image,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -200,6 +209,7 @@ compileBusinesses() async {
   var input = await rootBundle.loadString('assets/orgs.json');
   //var orgs = jsonDecode(input);
   var orgs = await jsonDecode(input);
+  print(orgs);
   return createBusinesses(orgs);
 }
 
@@ -207,13 +217,18 @@ Future<List<Widget>> createBusinesses(var orgs) async {
   List<Widget> businessWList = [];
 
   for (var business in orgs["organizations"]) {
+    print(business["number"]);
+    print(business["name"]);
+    print(1);
     businessWList.add(BusinessWidget(
+        number: business["number"] as int,
         name: business["name"],
         type: business["type"],
         description:
             "This is a very big business. It is very big. It is known for its largeness and humongosity. Very big. Like super duper big, like it is just so big. AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
         resources: business["resources"],
-        contact: business["contact"]["email"]));
+        contact: business["contact"]["email"],
+        ));
     businessWList.add(const SizedBox(height: 25));
   }
 
