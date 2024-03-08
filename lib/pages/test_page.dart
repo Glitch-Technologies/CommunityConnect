@@ -99,7 +99,8 @@ class _TestPageState extends State<TestPage> {
                                             onPressed: () async {
                                                 // Button logic here
                                                 //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
-                                                String response = await Server.tryConnect().then((value) => value.toString());
+                                                String response = "false";
+                                                response = await Server.test().then((value) => value.toString());
                                                 return await showDialog(
                                                     context: context,
                                                     builder: (BuildContext context) {

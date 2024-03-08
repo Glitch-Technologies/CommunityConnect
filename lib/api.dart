@@ -12,8 +12,9 @@ class Server {
     var response = await fetchData(request);
     return response;
   }
+
   static Future<bool> test() async {
-    return true;
+    return await true;
   }
 
   static Future<bool> tryConnect() async {
