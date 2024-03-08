@@ -3,12 +3,15 @@
 *  Invoke with `Server.foo();`
 */
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'dart:async';
 
-class Server {
-
+static String encode(String data) {
+  String encodedData = base64Url.encode(utf8.encode(data));
+  return encodedData.replaceAll('=', '~');
+}
   //TODO: Write encode operation in dart. See server/main.py:encode
+  static String encode(String data) {
+    
+  }
 
   static Future<dynamic> search(String term) async {
     String request = buildRequest("search", {"term": term});

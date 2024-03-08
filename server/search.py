@@ -1,6 +1,12 @@
 import json
-from main import jload
 from search_algorithm import search
+
+
+def jload(file):
+    jfile = open(file)
+    jdict = json.load(jfile)
+    jfile.close()
+    return jdict
 
 data = jload("orgs.json")
 
