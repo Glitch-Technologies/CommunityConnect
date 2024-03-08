@@ -53,6 +53,7 @@ for org in input['organizations']:  # for each organization
 		output['matches'].append(org)  # add it to the 'matches' list
 		continue
 
-
+# code below is for testing, should be removed on final revision
 for match in output['matches']:
 	print(match['name'])
+# code above is for testing, should be removed on final revision
