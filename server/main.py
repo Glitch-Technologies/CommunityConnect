@@ -41,7 +41,6 @@ def get_query(query):
         values.append(pair[1])
     return dict(zip(keys, values))
 
-
 class CommunityConnectServer(BaseHTTPRequestHandler):
     def do_GET(self):
         p = self.path.split("?")[0]
@@ -74,6 +73,13 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             query_components = {}
             if len(query) > 0:
                 query_components = get_query(query)
+        
+        if self.path == "/upload":
+            jwrite("orgs.json", post_data)
+            self.wfile.write(bytes(json.dumps({"success": 1})))
+
+
+        
         self.send_response(200)
         self.send_header("Content-type", "text/json")
         self.end_headers()
