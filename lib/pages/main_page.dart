@@ -92,6 +92,21 @@ class _MainPageState extends State<MainPage> {
                 },
                 child: Text('Click me'),
               ),
+              ElevatedButton.icon(
+                  onPressed: () {
+                      // Show help popup logic here
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                              return AlertDialog(
+                                  content: Text('Help not found'),
+                              );
+                          },
+                      );
+                  },
+                  icon: Icon(Icons.help_outline),
+                  label: Text('Help'),
+              ),
               const SizedBox(height: 25),
               FutureBuilder(future: compileBusinesses((int i) {openBusiness(i);}), builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
