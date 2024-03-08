@@ -1,11 +1,12 @@
 import json
 from main import jload
+from search_algorithm import search
 
 data = jload("orgs2.json")
 
 
 # GPT-made search algo for dataset
-def search_organization(data, search_term):
+def old_search_organization(data, search_term):
     organizations = data.get("organizations", [])
     
     results = []
@@ -21,6 +22,10 @@ def search_organization(data, search_term):
                 break
 
     return results
+
+def search_organization(data, search_term):
+    input = {'search': search_term, 'organizations': data['organizations']}
+    return search(input)
 
 # Dataset feeder subroutine
 def lookup(search_term):
