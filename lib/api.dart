@@ -13,6 +13,10 @@ class Server {
     return response;
   }
 
+  static Future<bool> test() async {
+    return await true;
+  }
+
   static Future<bool> tryConnect() async {
     String request = buildRequest("supersecret", {});
     var response = await fetchData(request, json: false).timeout(
