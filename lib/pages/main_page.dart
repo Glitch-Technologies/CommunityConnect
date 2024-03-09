@@ -4,6 +4,8 @@ import 'dart:convert';
 import "../api.dart";
 import 'package:flutter/services.dart';
 
+int businessNum = 1;
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -16,7 +18,8 @@ class _MainPageState extends State<MainPage> {
   List<Widget> businessWidgets = [Text("hi")];
 
   void openBusiness(int i) {
-    print("yolo");
+    businessNum = i;
+    Navigator.pushNamedAndRemoveUntil(context, "/business_page/", (Route route) => false);
   }
 
   Future<void> search(String term) async {
