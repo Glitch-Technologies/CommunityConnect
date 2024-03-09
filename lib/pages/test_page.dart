@@ -98,12 +98,14 @@ class _TestPageState extends State<TestPage> {
                                         child: ElevatedButton.icon(
                                             onPressed: () async {
                                                 // Button logic here
-                                                String formattedResponse = await Server.tryConnect().then((value) => value.toString());
-                                                showDialog(
+                                                //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
+                                                String response = "false";
+                                                response = await Server.test().then((value) => value.toString());
+                                                return await showDialog(
                                                     context: context,
                                                     builder: (BuildContext context) {
                                                         return AlertDialog(
-                                                            content: Text(formattedResponse),
+                                                            content: Text(response),
                                                         );
                                                     },
                                                 );

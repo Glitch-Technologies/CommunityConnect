@@ -66,45 +66,93 @@ class _MainPageState extends State<MainPage> {
         ]
       ),
       body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: lightSkyBlue,
-          child: Column(
-            children: [
-              const SizedBox(height: 25),
-              SizedBox(
-                  width: 450,
-                  child: TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                      hintText: 'Search...',
-                      hintStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    onSubmitted: (value) async {
-                      search(value);
-                    },
-                  )),
-              //This bit only causes problems
-              ElevatedButton(
-                onPressed: () async {
-                  merch("laremy");
+      width: double.infinity,
+      height: double.infinity,
+      color: lightSkyBlue,
+      child: Column(
+        children: [
+          const SizedBox(height: 25),
+          SizedBox(
+              width: 450,
+              child: TextField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  hintStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+                onSubmitted: (value) async {
+                  search(value);
                 },
-                child: Text('Click me'),
+              )),
+          //This bit only causes problems
+          ElevatedButton(
+            onPressed: () async {
+              merch("laremy");
+            },
+            child: Text('Click me'),
+          ),
+          const SizedBox(height: 25),
+          FutureBuilder(future: compileBusinesses((int i) {openBusiness(i);}), builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return Expanded(child: SingleChildScrollView(child: Column(children: snapshot.data)));
+            } else {
+              return SizedBox();
+            }
+          }),
+          Stack(
+            children: [
+              Align(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton.icon(
+                  onPressed: () async {
+                      // Show help popup logic here
+                      var helpmessage = await rootBundle.loadString('assets/helpmessage.txt');
+                      return await showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                              return AlertDialog(
+                                  content: Text(helpmessage),
+                              );
+                          },
+                      );
+                  },
+                  icon: Icon(Icons.help_outline),
+                  label: Text('Help'),
+                ),
               ),
-              const SizedBox(height: 25),
-              FutureBuilder(future: compileBusinesses((int i) {openBusiness(i);}), builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return Expanded(child: SingleChildScrollView(child: Column(children: snapshot.data)));
-                } else {
-                  return SizedBox();
-                }
-              })
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 10, left: 10),
+                  child: ElevatedButton.icon(
+                    onPressed: () async {
+                      // Button logic here
+                      //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
+                      //TODO: Fix this
+                      String response = "false";
+                      response = await Server.test().then((value) => value.toString());
+                      return await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                              content: Text(response),
+                          );
+                        },
+                      );
+                    },
+                    icon: Icon(Icons.flash_on),
+                    label: Text('Connection Test'),
+                  ),
+                ),
+              ),      
             ],
-          )),
+          ),
+        ],
+      )),
     );
   }
 }
