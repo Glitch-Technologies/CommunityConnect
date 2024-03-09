@@ -73,7 +73,8 @@ class _BusinessPageState extends State<BusinessPage> {
                                                 businessDic["name"],
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
-                                                    color: richBlack, fontSize: 40),
+                                                    color: richBlack,
+                                                    fontSize: 40),
                                                 textAlign: TextAlign.start,
                                               ),
                                             ),
@@ -86,7 +87,8 @@ class _BusinessPageState extends State<BusinessPage> {
                                                 businessDic["type"],
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
-                                                    color: richBlack, fontSize: 25),
+                                                    color: richBlack,
+                                                    fontSize: 25),
                                                 textAlign: TextAlign.start,
                                               ),
                                             ),
@@ -98,7 +100,8 @@ class _BusinessPageState extends State<BusinessPage> {
                                                 maxLines: 5,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
-                                                    color: richBlack, fontSize: 18),
+                                                    color: richBlack,
+                                                    fontSize: 18),
                                                 textAlign: TextAlign.start,
                                               ),
                                             ),
@@ -110,7 +113,8 @@ class _BusinessPageState extends State<BusinessPage> {
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 2,
                                                 style: TextStyle(
-                                                    color: richBlack, fontSize: 18),
+                                                    color: richBlack,
+                                                    fontSize: 18),
                                                 textAlign: TextAlign.start,
                                               ),
                                             ),
@@ -122,7 +126,8 @@ class _BusinessPageState extends State<BusinessPage> {
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 2,
                                                 style: TextStyle(
-                                                    color: richBlack, fontSize: 18),
+                                                    color: richBlack,
+                                                    fontSize: 18),
                                                 textAlign: TextAlign.start,
                                               ),
                                             )
@@ -133,22 +138,34 @@ class _BusinessPageState extends State<BusinessPage> {
                               ),
                             );
                           } else {
-                            TextEditingController nameCont = TextEditingController(text: businessDic["name"]);
-                            TextEditingController typeCont = TextEditingController(text: businessDic["type"]);
-                            TextEditingController descriptionCont = TextEditingController(text: businessDic["description"]);
-                            TextEditingController resourcesCont = TextEditingController(text: businessDic["resources"]);
-                            TextEditingController contactCont = TextEditingController(text: businessDic["contact"]["email"]);
+                            TextEditingController nameCont =
+                                TextEditingController(
+                                    text: businessDic["name"]);
+                            TextEditingController typeCont =
+                                TextEditingController(
+                                    text: businessDic["type"]);
+                            TextEditingController descriptionCont =
+                                TextEditingController(
+                                    text: businessDic["description"]);
+                            TextEditingController resourcesCont =
+                                TextEditingController(
+                                    text: businessDic["resources"]);
+                            TextEditingController contactCont =
+                                TextEditingController(
+                                    text: businessDic["contact"]["email"]);
                             return Column(
                               children: [
-                                SizedBox(height: 15,),
+                                SizedBox(
+                                  height: 15,
+                                ),
                                 SizedBox(
                                   height: 500,
                                   width: 500,
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: verdigris,
-                                      borderRadius: BorderRadius.circular(20.0)
-                                    ),
+                                        color: verdigris,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0)),
                                     child: Center(
                                         child: SizedBox(
                                       height: 440,
@@ -192,7 +209,8 @@ class _BusinessPageState extends State<BusinessPage> {
                                             child: TextField(
                                               controller: descriptionCont,
                                               decoration: InputDecoration(
-                                                hintText: businessDic["description"],
+                                                hintText:
+                                                    businessDic["description"],
                                               ),
                                               style: TextStyle(
                                                 fontSize: 18,
@@ -210,7 +228,8 @@ class _BusinessPageState extends State<BusinessPage> {
                                             child: TextField(
                                               controller: resourcesCont,
                                               decoration: InputDecoration(
-                                                hintText: businessDic["resources"],
+                                                hintText:
+                                                    businessDic["resources"],
                                               ),
                                               style: TextStyle(
                                                 fontSize: 18,
@@ -247,7 +266,25 @@ class _BusinessPageState extends State<BusinessPage> {
                                     child: SizedBox(
                                       height: 40,
                                       width: 200,
-                                      child: ElevatedButton(onPressed: () {saveChanges(businessNum, [nameCont.text, typeCont.text, descriptionCont.text, resourcesCont.text, contactCont.text]);}, style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(electricBlue), foregroundColor: MaterialStatePropertyAll(richBlack)), child: const Text("Save Changes"),),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          saveChanges(businessNum, [
+                                            nameCont.text,
+                                            typeCont.text,
+                                            descriptionCont.text,
+                                            resourcesCont.text,
+                                            contactCont.text
+                                          ]);
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStatePropertyAll(
+                                                    electricBlue),
+                                            foregroundColor:
+                                                MaterialStatePropertyAll(
+                                                    richBlack)),
+                                        child: const Text("Save Changes"),
+                                      ),
                                     ),
                                   ),
                                 )
@@ -266,7 +303,9 @@ class _BusinessPageState extends State<BusinessPage> {
                           height: 50,
                         ),
                         IconButton(
-                          onPressed: () {changeEdit();},
+                          onPressed: () {
+                            changeEdit();
+                          },
                           icon: Icon(
                             Icons.edit,
                             color: richBlack,
