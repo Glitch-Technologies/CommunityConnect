@@ -6,10 +6,6 @@ import 'dart:async';
 
 import "package:http/http.dart" as http;
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'dart:async';
-
-class Server {
 
 class Server {
   static String encode(String data) {
