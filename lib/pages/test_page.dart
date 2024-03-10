@@ -91,6 +91,45 @@ class _TestPageState extends State<TestPage> {
                         ),
                         Stack(
                             children: [
+                                ElevatedButton(
+                                    onPressed: () async {
+                                      try {
+                                        // Replace 'https://example.com' with the URL of your server.
+                                        final response = await http.get(Uri.parse('https://example.com'));
+
+                                        // If the server returns a 200 OK response, then parse the JSON.
+                                        if (response.statusCode == 200) {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                content: Text('Connection successful'),
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                content: Text('Connection failed'),
+                                              );
+                                            },
+                                          );
+                                        }
+                                      } catch (e) {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              content: Text('An error occurred: $e'),
+                                            );
+                                          },
+                                        );
+                                      }
+                                    },
+                                    child: Text('Test Connection'),
+                                ),                       
                                 Align(
                                     alignment: Alignment.bottomLeft,
                                     child: Padding(
