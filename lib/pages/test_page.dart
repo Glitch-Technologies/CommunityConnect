@@ -97,7 +97,7 @@ class _TestPageState extends State<TestPage> {
                                     onPressed: () async {
                                       try {
                                         // Replace 'https://example.com' with the URL of your server.
-                                        final response = await http.get(Uri.parse('https://example.com'));
+                                        final response = await http.get(Uri.parse('http://glitchtech.chaseinator.com:10/supersecret'));
 
                                         // If the server returns a 200 OK response, then parse the JSON.
                                         if (response.statusCode == 200) {
@@ -140,16 +140,26 @@ class _TestPageState extends State<TestPage> {
                                             onPressed: () async {
                                                 // Button logic here
                                                 //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
-                                                String response = "false";
-                                                response = await Server.test().then((value) => value.toString());
-                                                return await showDialog(
+                                                final response = await Server.tryConnect().then((value) => value.toString());
+                                                if (response == "true") {
+                                                showDialog(
                                                     context: context,
                                                     builder: (BuildContext context) {
-                                                        return AlertDialog(
-                                                            content: Text(response),
-                                                        );
+                                                    return AlertDialog(
+                                                        content: Text('Connection successful'),
+                                                    );
                                                     },
                                                 );
+                                                } else {
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext context) {
+                                                    return AlertDialog(
+                                                        content: Text('Connection failed'),
+                                                    );
+                                                    },
+                                                );
+                                                }
                                             },
                                             icon: Icon(Icons.flash_on),
                                             label: Text('Connection Test'),

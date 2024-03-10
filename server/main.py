@@ -91,6 +91,10 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
         
         self.send_response(200)
         self.send_header("Content-type", "text/json")
+        #Add CORS support. Flutter-only kind of deal
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST")
+        self.send_header("Access-Control-Allow-Headers", "Content-type")
         self.end_headers()
 
 
