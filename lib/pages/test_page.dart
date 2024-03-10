@@ -97,7 +97,8 @@ class _TestPageState extends State<TestPage> {
                                     onPressed: () async {
                                       try {
                                         // Replace 'https://example.com' with the URL of your server.
-                                        final response = await http.get(Uri.parse('https://example.com'));
+                                        final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+                                        
                                         
 
                                         // If the server returns a 200 OK response, then parse the JSON.
