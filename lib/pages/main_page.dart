@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import '../assets/colors.dart';
 import 'dart:convert';
@@ -19,7 +21,8 @@ class _MainPageState extends State<MainPage> {
 
   void openBusiness(int i) {
     businessNum = i;
-    Navigator.pushNamedAndRemoveUntil(context, "/business_page/", (Route route) => false);
+    Navigator.pushNamedAndRemoveUntil(
+        context, "/business_page/", (Route route) => false);
   }
 
   Future<void> search(String term) async {
@@ -43,12 +46,13 @@ class _MainPageState extends State<MainPage> {
 
   Future<String> merch(String term) async {
     businessWidgets.add(BusinessWidget(
-        number: 0,
-        name: "name",
-        type: "type",
-        description: "description",
-        resources: "resources",
-        contact: "contact email",));
+      number: 0,
+      name: "name",
+      type: "type",
+      description: "description",
+      resources: "resources",
+      contact: "contact email",
+    ));
     businessWidgets.add(const SizedBox(height: 25));
     setState(() {});
     return "success";
@@ -58,101 +62,93 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: midnightGreen,
-        title: Text("CommunityConnect"),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.question_mark, color: richBlack), tooltip: "Help"),
-          SizedBox(width: 75),
-        ]
-      ),
-      body: Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: lightSkyBlue,
-      child: Column(
-        children: [
-          const SizedBox(height: 25),
-          SizedBox(
-              width: 450,
-              child: TextField(
-                controller: searchController,
-                decoration: InputDecoration(
-                  hintText: 'Search...',
-                  hintStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                onSubmitted: (value) async {
-                  search(value);
-                },
-              )),
-          //This bit only causes problems
-          ElevatedButton(
-            onPressed: () async {
-              merch("laremy");
-            },
-            child: Text('Click me'),
-          ),
-          const SizedBox(height: 25),
-          FutureBuilder(future: compileBusinesses((int i) {openBusiness(i);}), builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasData) {
-              return Expanded(child: SingleChildScrollView(child: Column(children: snapshot.data)));
-            } else {
-              return SizedBox();
-            }
-          }),
-          Stack(
-            children: [
-              Align(
-                alignment: Alignment.bottomRight,
-                child: ElevatedButton.icon(
-                  onPressed: () async {
-                      // Show help popup logic here
-                      var helpmessage = await rootBundle.loadString('assets/helpmessage.txt');
-                      return await showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                              return AlertDialog(
-                                  content: Text(helpmessage),
-                              );
-                          },
-                      );
+          backgroundColor: midnightGreen,
+          title: Text("CommunityConnect", style: TextStyle(color: Colors.white),),
+          actions: [
+            IconButton(
+              onPressed: () async {
+                // Button logic here
+                //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
+                //TODO: Fix this
+                String response = "false";
+                response =
+                    await Server.test().then((value) => value.toString());
+                return await showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      content: Text(response),
+                    );
                   },
-                  icon: Icon(Icons.help_outline),
-                  label: Text('Help'),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: 10, left: 10),
-                  child: ElevatedButton.icon(
-                    onPressed: () async {
-                      // Button logic here
-                      //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
-                      //TODO: Fix this
-                      String response = "false";
-                      response = await Server.test().then((value) => value.toString());
-                      return await showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                              content: Text(response),
-                          );
-                        },
+                );
+              },
+              icon: Icon(Icons.flash_on, color: electricBlue,),
+            ),
+            IconButton(
+                onPressed: () async {
+                  // Show help popup logic here
+                  var helpmessage =
+                      await rootBundle.loadString('assets/helpmessage.txt');
+                  return await showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Text(helpmessage),
                       );
                     },
-                    icon: Icon(Icons.flash_on),
-                    label: Text('Connection Test'),
-                  ),
+                  );
+                },
+                icon: Icon(
+                  Icons.help_outline,
+                  color: electricBlue,
                 ),
-              ),      
+                tooltip: "Help"),
+            SizedBox(width: 75),
+          ]),
+      body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          color: lightSkyBlue,
+          child: Column(
+            children: [
+              const SizedBox(height: 25),
+              SizedBox(
+                  width: 450,
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: 'Search...',
+                      hintStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    onSubmitted: (value) async {
+                      search(value);
+                    },
+                  )),
+              //This bit only causes problems
+              ElevatedButton(
+                onPressed: () async {
+                  merch("laremy");
+                },
+                child: Text('Click me'),
+              ),
+              const SizedBox(height: 25),
+              FutureBuilder(future: compileBusinesses((int i) {
+                openBusiness(i);
+              }), builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  return Expanded(
+                      child: SingleChildScrollView(
+                          child: Column(children: snapshot.data)));
+                } else {
+                  return SizedBox();
+                }
+              }),
             ],
-          ),
-        ],
-      )),
+          )),
     );
   }
 }
@@ -167,17 +163,17 @@ class BusinessWidget extends StatelessWidget {
   final Image? image;
   final onPressed;
 
-  BusinessWidget(
-      {super.key,
-      required this.number,
-      required this.name,
-      required this.type,
-      required this.description,
-      required this.resources,
-      required this.contact,
-      this.image,
-      this.onPressed,
-      });
+  BusinessWidget({
+    super.key,
+    required this.number,
+    required this.name,
+    required this.type,
+    required this.description,
+    required this.resources,
+    required this.contact,
+    this.image,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +187,9 @@ class BusinessWidget extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     )),
-                onPressed: () {onPressed(number);},
+                onPressed: () {
+                  onPressed(number);
+                },
                 child: SizedBox(
                     height: 220,
                     width: 430,
@@ -262,7 +260,9 @@ compileBusinesses(var open) async {
   var input = await rootBundle.loadString('assets/orgs.json');
   //var orgs = jsonDecode(input);
   var orgs = await jsonDecode(input);
-  return createBusinesses(orgs, (int i) {open(i);});
+  return createBusinesses(orgs, (int i) {
+    open(i);
+  });
 }
 
 Future<List<Widget>> createBusinesses(var orgs, var open) async {
@@ -277,8 +277,9 @@ Future<List<Widget>> createBusinesses(var orgs, var open) async {
             "This is a very big business. It is very big. It is known for its largeness and humongosity. Very big. Like super duper big, like it is just so big. AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
         resources: business["resources"],
         contact: business["contact"]["email"],
-        onPressed: (int i) {open(i);}
-        ));
+        onPressed: (int i) {
+          open(i);
+        }));
     businessWList.add(const SizedBox(height: 25));
   }
 
