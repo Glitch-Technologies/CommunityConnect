@@ -2,16 +2,18 @@
 *  Import with `import "api.dart";`
 *  Invoke with `Server.foo();`
 */
+import 'dart:async';
+
+import "package:http/http.dart" as http;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
 class Server {
 
-  //TODO: Write encode operation in dart. See server/main.py:encode
-  static String en(String data) {
-    String encodedData = "";
-    encodedData = base64Url.encode(utf8.encode(data));
+class Server {
+  static String encode(String data) {
+    String encodedData = base64Url.encode(utf8.encode(data));
     return encodedData.replaceAll('=', '~');
   }
 
