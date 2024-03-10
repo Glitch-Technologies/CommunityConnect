@@ -97,7 +97,8 @@ class _TestPageState extends State<TestPage> {
                                     onPressed: () async {
                                       try {
                                         // Replace 'https://example.com' with the URL of your server.
-                                        final response = await http.get(Uri.parse('http://glitchtech.top:10/supersecret'));
+                                        final response = await http.get(Uri.parse('https://example.com'));
+                                        
 
                                         // If the server returns a 200 OK response, then parse the JSON.
                                         if (response.statusCode == 200) {
