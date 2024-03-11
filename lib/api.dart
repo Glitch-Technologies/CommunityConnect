@@ -25,45 +25,16 @@ class Server {
   }
 
   static Future<bool> tryConnect() async {
-    String request = buildRequest("supersecret", {});
-    final response = await fetchData(request, json: false);
-    return response != null;
-  }
-
-
-    static String buildRequest(String path, Map query, {bool encode = false}) {
-      String url = 'http://glitchtech.top:10/$path';
-      if (query.isNotEmpty) {
-        url += '?';
-        for (int i = 0; i < query.keys.length; i++) {
-          if (encode == true) {
-            url += '${query.keys.elementAt(i)}=${en(query.values.elementAt(i))}';
-          } else {
-            url += '${query.keys.elementAt(i)}=${query.values.elementAt(i)}';
-          }
-          if (i + 1 < query.length) {
-            url += '&';
-          }
-        }
-      }
-      return url;
-    }
-
-    static Future<dynamic> fetchData(String request, {bool json = true}) async {
-      var response = await http.get(Uri.parse(request));
-      if (response.statusCode == 200) {
-        dynamic data;
-        if (json) {
-          data = jsonDecode(response.body);
-        } else {
-          data = response.body;
-        }
-        return data;
+      String request = buildRequest("supersecret", {});
+      final response = await fetchData(request, json: false);
+      if (response is TimeoutException) {
+        return false;
       } else {
-        return "";
+        return true;
       }
     }
-  }
+
+  static String buildRequest(String path, Map query, {bool encode = false}) {
     String url = 'http://glitchtech.top:10/$path?';
     for (int i = 0; i < query.keys.length; i++) {
       if (encode == true) {
