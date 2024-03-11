@@ -35,8 +35,8 @@ def old_search_organization(data, search_term):
 
 def search_organization(data, search_term, search_parameters):
 
-    for key, value in search_parameters.items():
-        search_parameters[key] = de(value)
+    #for key, value in search_parameters.items():
+    #    search_parameters[key] = de(value)
     
     input = {'search': search_term, 'organizations': data['organizations'], 'parameters': search_parameters}
     return search(input)

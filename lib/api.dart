@@ -36,7 +36,7 @@ class Server {
     }
   }
 
-  static String buildRequest(String path, Map query, {bool encode = true}) {
+  static String buildRequest(String path, Map query, {bool encode = false}) {
     String url = 'http://glitchtech.top:10/$path?';
     for (int i = 0; i < query.keys.length; i++) {
       if (encode == true) {
