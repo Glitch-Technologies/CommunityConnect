@@ -43,7 +43,7 @@ def search_organization(data, search_term, search_parameters):
 
 # Dataset feeder subroutine
 def lookup(search_term, search_parameters):
-    return old_search_organization(data, search_term, search_parameters)
+    return old_search_organization(data, search_term,)# search_parameters)
 
 # Text output for lookup(NO RETURN VALUE)
 def debuglookup(search_term):
