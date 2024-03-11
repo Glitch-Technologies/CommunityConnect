@@ -1,16 +1,15 @@
 #input = {'search': "environmental", 'organizations': []}
 
 def search(input):
-  return {"I hate this": "L"}
   output = {'matches': []}
   terms = input['search'].split(" ")
   
   # return every organization if empty search
-  if input['search'].length() == 0 or "laremy" in terms:
+  if len(input['search']) == 0 or "laremy" in terms:
     output['matches'] = input['organizations']
   
   # checking for organization search by number
-  elif terms.length() == 1 and terms[0].isdigit():
+  elif len(terms) == 1 and terms[0].isdigit():
     number = int(terms[0])
     for org in input['organizations']:
       if org['number'] == number:
@@ -34,5 +33,5 @@ def search(input):
   for org in output['matches']:
     # TODO: update below function when more parameters are added
     if org['genre'] != input['parameters']['genre']:
-      output.remove(org)
+      output['matches'].remove(org)
   return output  # code below is for testing, should be removed on final revision  for match in output['matches']:  	print(match['name'])  # code above is for testing, should be removed on final revision
