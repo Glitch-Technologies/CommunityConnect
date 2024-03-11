@@ -1,6 +1,6 @@
-#input = {'search': "environmental", 'organizations': []}
+# example input json below:
+#input = {'search': "environmental", 'parameters': {'location': "California", 'genre': "Technology"}, 'organizations': []}
 def search(input):
-  
   output = {'matches': []}
   terms = input['search'].split(" ")
 
@@ -27,4 +27,8 @@ def search(input):
       if org_matches:
         output['matches'].append(org)  # add it to the 'matches' list
         continue
+  for org in output['matches']:
+    # TODO: later implement general check for all parameters, not just genre
+    if org['genre'] != input['parameters']['genre']:
+      output.remove(org)
   return output  # code below is for testing, should be removed on final revision  for match in output['matches']:  	print(match['name'])  # code above is for testing, should be removed on final revision
