@@ -39,7 +39,8 @@ def search_organization(data, search_term, search_parameters):
     #    search_parameters[key] = de(value)
     
     input = {'search': search_term, 'organizations': data['organizations'], 'parameters': search_parameters}
-    return search(input)
+    #return search(input)
+    return {"I hate myself": "lol"}
 
 # Dataset feeder subroutine
 def lookup(search_term, search_parameters):
