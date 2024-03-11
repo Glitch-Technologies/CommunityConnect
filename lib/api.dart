@@ -48,7 +48,7 @@ class Server {
   }
 
   static Future<dynamic> fetchData(String request, {bool json = true}) async {
-    var response = await http.get(Uri.parse(request));
+    var response = await http.get(Uri.parse(request));6
     if (response.statusCode == 200) {
       dynamic data;
       if (json) {
