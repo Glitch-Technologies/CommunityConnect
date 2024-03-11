@@ -9,7 +9,7 @@ import 'dart:convert';
 
 class Server {
 
-  static String encode(String data) {
+  static String en(String data) {
     String encodedData = base64Url.encode(utf8.encode(data));
     return encodedData.replaceAll('=', '~');
   }
@@ -26,20 +26,51 @@ class Server {
 
   static Future<bool> tryConnect() async {
     String request = buildRequest("supersecret", {});
-    final response = await fetchData(request, json: false).timeout(
-        Duration(seconds: 5),
-        onTimeout: () => throw TimeoutException("timeout"));
-    if (response is TimeoutException) {
-      return false;
-    } else {
-      return true;
-    }
+    final response = await fetchData(request, json: false);
+    return response != null;
   }
 
-  static String buildRequest(String path, Map query, {bool encode = true}) {
+
+    static String buildRequest(String path, Map query, {bool encode = false}) {
+      String url = 'http://glitchtech.top:10/$path';
+      if (query.isNotEmpty) {
+        url += '?';
+        for (int i = 0; i < query.keys.length; i++) {
+          if (encode == true) {
+            url += '${query.keys.elementAt(i)}=${en(query.values.elementAt(i))}';
+          } else {
+            url += '${query.keys.elementAt(i)}=${query.values.elementAt(i)}';
+          }
+          if (i + 1 < query.length) {
+            url += '&';
+          }
+        }
+      }
+      return url;
+    }
+
+    static Future<dynamic> fetchData(String request, {bool json = true}) async {
+      var response = await http.get(Uri.parse(request));
+      if (response.statusCode == 200) {
+        dynamic data;
+        if (json) {
+          data = jsonDecode(response.body);
+        } else {
+          data = response.body;
+        }
+        return data;
+      } else {
+        return "";
+      }
+    }
+  }
     String url = 'http://glitchtech.top:10/$path?';
     for (int i = 0; i < query.keys.length; i++) {
-      url = '$url${query.keys.elementAt(i)}=${query.values.elementAt(i)}';
+      if (encode == true) {
+        url = '$url${query.keys.elementAt(i)}=${en(query.values.elementAt(i))}';
+      } else {
+        url = '$url${query.keys.elementAt(i)}=${query.values.elementAt(i)}';
+      }
       if (i + 1 < query.length) {
         url = '$url&';
       }
