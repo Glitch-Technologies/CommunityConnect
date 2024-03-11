@@ -12,7 +12,7 @@ def search(input):
   # I.e. http://glitchtech.top/search?term=tech&location=california
   # NO FILTRATION is done to ensure the validity of keywords, but the keys must be URL compliant strings
   # I will provide an UTF-8 encoding algorithm for protecting the values, but cannot wrap the keys
-  if input['search'].length() = 0 or "laremy" in terms:
+  if input['search'].length() == 0 or "laremy" in terms:
     output['matches'] = input['organizations']
   else:
     for org in input['organizations']:  # for each organization
