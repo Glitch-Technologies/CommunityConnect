@@ -59,7 +59,11 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
         if len(query) > 0:
             query_components = get_query(query)
         self.send_response(200)
-        self.send_header("Content-type", "text/json")
+        self.send_header("Content-type", "application/json")
+        # Disable CORS security
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "*")
+        self.send_header("Access-Control-Allow-Headers", "*")
         self.end_headers()
 
         if p == "/supersecret":

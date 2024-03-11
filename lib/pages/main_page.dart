@@ -34,6 +34,7 @@ class _MainPageState extends State<MainPage> {
       });
     }
     var orgs = await Server.search(term);
+    //String orgs = await Server.tryConnect().then((value) => value.toString());
     print(orgs);
     var businessWidgets = createBusinesses(orgs, (int i) {
       open(i);
