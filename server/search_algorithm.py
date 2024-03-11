@@ -1,4 +1,9 @@
+import base64
 #input = {'search': "environmental", 'organizations': []}
+
+def de(input_str):
+  return base64.urlsafe_b64decode(input_str.replace('~', '=')).decode("utf-8")
+
 def search(input):
   
   output = {'matches': []}

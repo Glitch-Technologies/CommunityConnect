@@ -9,7 +9,7 @@ import 'dart:convert';
 
 class Server {
 
-  static String encode(String data) {
+  static String en(String data) {
     String encodedData = base64Url.encode(utf8.encode(data));
     return encodedData.replaceAll('=', '~');
   }
@@ -39,7 +39,11 @@ class Server {
   static String buildRequest(String path, Map query, {bool encode = true}) {
     String url = 'http://glitchtech.top:10/$path?';
     for (int i = 0; i < query.keys.length; i++) {
-      url = '$url${query.keys.elementAt(i)}=${query.values.elementAt(i)}';
+      if (encode == true) {
+        url = '$url${query.keys.elementAt(i)}=${en(query.values.elementAt(i))}';
+      } else {
+        url = '$url${query.keys.elementAt(i)}=${query.values.elementAt(i)}';
+      }
       if (i + 1 < query.length) {
         url = '$url&';
       }
