@@ -8,6 +8,6 @@ Future<void> main() async {
   //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
   //print(formattedResponse);
   //print(Server.en("abcd"));
-  //final response = await http.get(Uri.parse('https://example.com'));
-  print(Server.fetchAlbum());
+  final response = await http.get(Uri.parse('http://glitchtech.tedfullwood.com:10'));
+  print(response.statusCode);
 }

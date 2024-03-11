@@ -8,20 +8,6 @@ import "package:http/http.dart" as http;
 import 'dart:convert';
 
 class Server {
-  static Future<dynamic> fetchAlbum() async {
-    final response = await http
-        .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
-
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return jsonDecode(response.body) as Map<String, dynamic>;
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load album');
-    }
-  }
 
   static String encode(String data) {
     String encodedData = base64Url.encode(utf8.encode(data));
@@ -40,7 +26,7 @@ class Server {
 
   static Future<bool> tryConnect() async {
     String request = buildRequest("supersecret", {});
-    var response = await fetchData(request, json: false).timeout(
+    final response = await fetchData(request, json: false).timeout(
         Duration(seconds: 5),
         onTimeout: () => throw TimeoutException("timeout"));
     if (response is TimeoutException) {

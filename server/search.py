@@ -29,13 +29,13 @@ def old_search_organization(data, search_term):
 
     return results
 
-def search_organization(data, search_term):
-    input = {'search': search_term, 'organizations': data['organizations']}
+def search_organization(data, search_term, search_parameters):
+    input = {'search': search_term, 'organizations': data['organizations'], 'parameters': search_parameters}
     return search(input)
 
 # Dataset feeder subroutine
-def lookup(search_term):
-    return search_organization(data, search_term)
+def lookup(search_term, search_parameters):
+    return search_organization(data, search_term, search_parameters)
 
 # Text output for lookup(NO RETURN VALUE)
 def debuglookup(search_term):

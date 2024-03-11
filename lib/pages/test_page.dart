@@ -97,8 +97,7 @@ class _TestPageState extends State<TestPage> {
                                     onPressed: () async {
                                       try {
                                         // Replace 'https://example.com' with the URL of your server.
-                                        final response = await http.get(Uri.parse('http://glitchtech.top:10'));
-                                        
+                                        final response = await http.get(Uri.parse('http://glitchtech.top:10/supersecret'));                                        
                                         
 
                                         // If the server returns a 200 OK response, then parse the JSON.
@@ -142,8 +141,8 @@ class _TestPageState extends State<TestPage> {
                                             onPressed: () async {
                                                 // Button logic here
                                                 //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
-                                                final response = await Server.tryConnect().then((value) => value.toString());
-                                                if (response == "true") {
+                                                final response = await Server.tryConnect();
+                                                if (response == true) {
                                                 showDialog(
                                                     context: context,
                                                     builder: (BuildContext context) {

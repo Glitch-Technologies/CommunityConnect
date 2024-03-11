@@ -1,7 +1,17 @@
 #input = {'search': "environmental", 'organizations': []}
 def search(input):
+  
   output = {'matches': []}
   terms = input['search'].split(" ")
+
+  # Message from greenturtle537, DEL when complete
+  # Todo for Tar, implement search_parameters
+  # Keyword dictionary stored in input['parameters']
+  # Backend-wise, all non-specificied query parameters are treated as search parameters
+  # So you get to invent the keywords
+  # I.e. http://glitchtech.top/search?term=tech&location=california
+  # NO FILTRATION is done to ensure the validity of keywords, but the keys must be URL compliant strings
+  # I will provide an UTF-8 encoding algorithm for protecting the values, but cannot wrap the keys
 
   for org in input['organizations']:  # for each organization
     org_matches = False
