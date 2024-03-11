@@ -26,6 +26,13 @@ class _MainPageState extends State<MainPage> {
   }
 
   Future<List<Widget>> search(String term, var open) async {
+    final specialChars = RegExp(r'[\^$*.\[\]{}()?\-"!@#%&/\,><:;_~`+='"'"']');
+
+    if (term.contains(specialChars)) {
+      return Future.delayed(Duration(milliseconds: 1), () {
+        return [Center(child: Text("kys"))];
+      });
+    }
     var orgs = await Server.search(term);
     print(orgs);
     var businessWidgets = createBusinesses(orgs, (int i) {
