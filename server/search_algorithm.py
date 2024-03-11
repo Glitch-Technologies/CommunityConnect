@@ -16,20 +16,15 @@ def search(input):
     for org in input['organizations']:
       if org['number'] == number:
         output['matches'].append(org)
+
   # adding organizations matching key terms to output
+  # TODO: following code doubles some orgs on server side search (doesnt on tar's end)
   else:
     for org in input['organizations']:  # for each organization
-      org_matches = False
-      for key in org:
-        for term in terms:
-          if term in str(org[key]).lower():  # if a term is found in any of the dict values
-            org_matches = True
-            break
-        if org_matches:
-          break
-      if org_matches:
-        output['matches'].append(org)  # add it to the 'matches' list
-        continue
+      org_text = str(org).lower()
+      for term in terms:
+        if term in org_text:
+          output['matches'].append(org)  # add it to the 'matches' list
     
   # applying filters
   i = 0
@@ -48,8 +43,8 @@ def search(input):
     i += 1
   return output  # code below is for testing, should be removed on final revision  for match in output['matches']:
 
-# below is an example of a call to the search function
 
+# below is an example of a call to the search function
 """orgs = [
     {
       "number": 1,
