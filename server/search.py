@@ -12,7 +12,7 @@ def jload(file):
     jfile.close()
     return jdict
 
-data = jload("orgs.json")
+data = jload("orgs2.json")
 
 
 # GPT-made search algo for dataset
@@ -43,7 +43,7 @@ def search_organization(data, search_term, search_parameters):
 
 # Dataset feeder subroutine
 def lookup(search_term, search_parameters):
-    return search_organization(data, search_term, search_parameters)
+    return old_search_organization(data, search_term, search_parameters)
 
 # Text output for lookup(NO RETURN VALUE)
 def debuglookup(search_term):
