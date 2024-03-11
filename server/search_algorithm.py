@@ -1,5 +1,5 @@
 import base64
-#input = {'search': "environmental", 'parameters': {'location': "california", 'genre': "Technology", }, 'organizations': []}
+# input = {'search': "environmental", 'parameters': {'location': "california", 'genre': "Technology", }, 'organizations': []}
 
 def search(input):
 
