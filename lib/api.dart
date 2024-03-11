@@ -25,16 +25,14 @@ class Server {
   }
 
   static Future<bool> tryConnect() async {
-    String request = buildRequest("supersecret", {});
-    final response = await fetchData(request, json: false).timeout(
-        Duration(seconds: 5),
-        onTimeout: () => throw TimeoutException("timeout"));
-    if (response is TimeoutException) {
-      return false;
-    } else {
-      return true;
+      String request = buildRequest("supersecret", {});
+      final response = await fetchData(request, json: false);
+      if (response is TimeoutException) {
+        return false;
+      } else {
+        return true;
+      }
     }
-  }
 
   static String buildRequest(String path, Map query, {bool encode = false}) {
     String url = 'http://glitchtech.top:10/$path?';

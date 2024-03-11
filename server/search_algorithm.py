@@ -1,10 +1,8 @@
 import base64
 #input = {'search': "environmental", 'parameters': {'location': "california", 'genre': "Technology", }, 'organizations': []}
 
-def de(input_str):
-  return base64.urlsafe_b64decode(input_str.replace('~', '=')).decode("utf-8")
-
 def search(input):
+
   output = {'matches': []}
   terms = input['search'].split(" ")
   
@@ -18,7 +16,6 @@ def search(input):
     for org in input['organizations']:
       if org['number'] == number:
         output['matches'].append(org)
-  
   # adding organizations matching key terms to output
   else:
     for org in input['organizations']:  # for each organization

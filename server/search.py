@@ -40,10 +40,12 @@ def search_organization(data, search_term, search_parameters):
     
     input = {'search': search_term, 'organizations': data['organizations'], 'parameters': search_parameters}
     return search(input)
+    #return {"I hate myself": "lol"}
 
 # Dataset feeder subroutine
 def lookup(search_term, search_parameters):
-    return search_organization(data, search_term, search_parameters)
+    #return search_organization(data, search_term, search_parameters)
+    return old_search_organization(data, search_term)
 
 # Text output for lookup(NO RETURN VALUE)
 def debuglookup(search_term):
