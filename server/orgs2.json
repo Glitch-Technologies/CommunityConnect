@@ -56,6 +56,7 @@
       "number": 5,
       "name": "UrbanBuilders Consortium",
       "type": "Construction and Development Company",
+      "genre": "Technology",
       "resources": "Skilled labor force, state-of-the-art equipment",
       "contact": {
         "name": "David Thompson",
@@ -68,6 +69,7 @@
       "number": 6,
       "name": "ArtsFusion Collective",
       "type": "Arts and Culture Organization",
+      "genre": "Technology",
       "resources": "Artist residency program, exhibition spaces",
       "contact": {
         "name": "Rachel Adams",
@@ -80,6 +82,7 @@
       "number": 7,
       "name": "InvestWell Finance Group",
       "type": "Financial Advisory Firm",
+      "genre": "Technology",
       "resources": "Investment analysis tools, expert financial advisors",
       "contact": {
         "name": "Michael Reynolds",
@@ -92,6 +95,7 @@
       "number": 8,
       "name": "CleanEco Solutions",
       "type": "Sustainable Cleaning Products Manufacturer",
+      "genre": "Technology",
       "resources": "Eco-friendly product line, R&D team",
       "contact": {
         "name": "Laura White",
@@ -104,6 +108,7 @@
       "number": 9,
       "name": "YouthEmpower Network",
       "type": "Youth Development Nonprofit",
+      "genre": "Technology",
       "resources": "Mentorship programs, youth centers",
       "contact": {
         "name": "Alex Johnson",
@@ -116,6 +121,7 @@
       "number": 10,
       "name": "TechBoost Innovations",
       "type": "Technology Incubator",
+      "genre": "Technology",
       "resources": "Startup mentoring, co-working spaces",
       "contact": {
         "name": "Jessica Adams",
@@ -128,6 +134,7 @@
       "number": 11,
       "name": "FoodShare Foundation",
       "type": "Hunger Relief Organization",
+      "genre": "Technology",
       "resources": "Food banks, community kitchens",
       "contact": {
         "name": "Sam Patel",
@@ -140,6 +147,7 @@
       "number": 12,
       "name": "SolarTech Solutions",
       "type": "Renewable Energy Company",
+      "genre": "Technology",
       "resources": "Solar panel manufacturing, solar farm installations",
       "contact": {
         "name": "Rachel Carter",
@@ -152,6 +160,7 @@
       "number": 13,
       "name": "DataInsights Corporation",
       "type": "Data Analytics Firm",
+      "genre": "Technology",
       "resources": "Advanced data analysis tools, data scientists",
       "contact": {
         "name": "Steven Lewis",
@@ -164,6 +173,7 @@
       "number": 14,
       "name": "GlobalEducation Exchange",
       "type": "International Student Exchange Program",
+      "genre": "Technology",
       "resources": "Network of partner universities, cultural immersion programs",
       "contact": {
         "name": "Maria Rodriguez",
@@ -176,6 +186,7 @@
       "number": 15,
       "name": "HealthFirst Clinics",
       "type": "Medical Clinics Chain",
+      "genre": "Technology",
       "resources": "Multi-specialty doctors, modern medical facilities",
       "contact": {
         "name": "Dr. Emily Davis",
@@ -188,6 +199,7 @@
       "number": 16,
       "name": "EcoHarvest Farms",
       "type": "Organic Farming Cooperative",
+      "genre": "Technology",
       "resources": "Vast farmlands, sustainable agricultural practices",
       "contact": {
         "name": "Daniel Brown",
@@ -200,6 +212,7 @@
       "number": 17,
       "name": "TechConnect Labs",
       "type": "Research & Development Center",
+      "genre": "Technology",
       "resources": "State-funded grants, research partnerships",
       "contact": {
         "name": "Dr. Sarah Johnson",
@@ -212,6 +225,7 @@
       "number": 18,
       "name": "CommuniCare Foundation",
       "type": "Community Health Services",
+      "genre": "Technology",
       "resources": "Mobile clinics, health education programs",
       "contact": {
         "name": "Laura Adams",
@@ -224,6 +238,7 @@
       "number": 19,
       "name": "EnviroGuardians",
       "type": "Environmental Protection Group",
+      "genre": "Technology",
       "resources": "Legal advocacy, environmental policy experts",
       "contact": {
         "name": "Thomas Hughes",
@@ -236,6 +251,7 @@
       "number": 20,
       "name": "FutureTech Innovations",
       "type": "Futuristic Technology Research Institute",
+      "genre": "Technology",
       "resources": "AI labs, quantum computing research",
       "contact": {
         "name": "Dr. Alex Chen",
@@ -248,6 +264,7 @@
       "number": 21,
       "name": "STEMEdge Foundation",
       "type": "STEM Education Advocacy Group",
+      "genre": "Technology",
       "resources": "Robotics kits, coding workshops",
       "contact": {
         "name": "Karen Foster",
@@ -260,6 +277,7 @@
       "number": 22,
       "name": "Global Learning Initiative",
       "type": "Educational Content Provider",
+      "genre": "Technology",
       "resources": "Online learning platforms, interactive courses",
       "contact": {
         "name": "James Collins",
@@ -272,6 +290,7 @@
       "number": 23,
       "name": "Artistry Academy",
       "type": "Creative Arts School",
+      "genre": "Technology",
       "resources": "Art studios, masterclasses by renowned artists",
       "contact": {
         "name": "Olivia Turner",
@@ -284,6 +303,7 @@
       "number": 24,
       "name": "LanguageLink Institute",
       "type": "Language Learning Center",
+      "genre": "Technology",
       "resources": "Immersive language programs, cultural exchanges",
       "contact": {
         "name": "Miguel Hernandez",
@@ -296,6 +316,7 @@
       "number": 25,
       "name": "FutureSkills Institute",
       "type": "Vocational Training Center",
+      "genre": "Technology",
       "resources": "Industry partnerships, hands-on training facilities",
       "contact": {
         "name": "Sophia Clark",
@@ -308,6 +329,7 @@
       "number": 26,
       "name": "GreenEarth Education",
       "type": "Environmental Education Nonprofit",
+      "genre": "Technology",
       "resources": "Nature reserves, sustainability workshops",
       "contact": {
         "name": "Anna White",
@@ -320,6 +342,7 @@
       "number": 27,
       "name": "TechGenius Academy",
       "type": "Technology Education Center",
+      "genre": "Technology",
       "resources": "Coding boot camps, tech competitions",
       "contact": {
         "name": "Daniel Lee",
@@ -332,6 +355,7 @@
       "number": 28,
       "name": "Globetrotter Schools Network",
       "type": "International School Network",
+      "genre": "Technology",
       "resources": "Diverse curriculum, global exchange programs",
       "contact": {
         "name": "Lisa Anderson",
