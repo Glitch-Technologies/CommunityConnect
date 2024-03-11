@@ -52,7 +52,7 @@ def get_query(query):
 
 class CommunityConnectServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        p = self.path.split("?")[06]
+        p = self.path.split("?")[0]
         # Refer to p[0] for get path
         query = urlparse(self.path).query
         query_components = {}
