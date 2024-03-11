@@ -33,7 +33,8 @@ class _MainPageState extends State<MainPage> {
         return [Center(child: Text("kys"))];
       });
     }
-    var orgs = await Server.search(term);
+    //var orgs = await Server.search(term);
+    final orgs = await Server.tryConnect().then((value) => value.toString());
     print(orgs);
     var businessWidgets = createBusinesses(orgs, (int i) {
       open(i);
