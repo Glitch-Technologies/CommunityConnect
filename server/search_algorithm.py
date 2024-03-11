@@ -34,4 +34,5 @@ def search(input):
     # TODO: update below function when more parameters are added
     if org['genre'] != input['parameters']['genre']:
       output.remove(org)
-  return output  # code below is for testing, should be removed on final revision  for match in output['matches']:  	print(match['name'])  # code above is for testing, should be removed on final revision
+  return {"I hate this": "L"}
+  #return output  # code below is for testing, should be removed on final revision  for match in output['matches']:  	print(match['name'])  # code above is for testing, should be removed on final revision
