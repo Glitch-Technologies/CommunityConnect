@@ -29,7 +29,7 @@ def search(input):
       if org_matches:
         output['matches'].append(org)  # add it to the 'matches' list
         continue
-  return {"I hate this": "L"}
+
   for org in output['matches']:
     # TODO: update below function when more parameters are added
     if org['genre'] != input['parameters']['genre']:
