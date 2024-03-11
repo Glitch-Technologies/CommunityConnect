@@ -16,8 +16,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  String searchTerm = "laremy";
   final searchController = SearchController();
-  List<Widget> businessWidgets = [Text("hi")];
 
   void openBusiness(int i) {
     businessNum = i;
@@ -25,37 +25,21 @@ class _MainPageState extends State<MainPage> {
         context, "/business_page/", (Route route) => false);
   }
 
-  Future<void> search(String term) async {
-    businessWidgets = [];
-    var orgs = await Server.search(term);
-    if (orgs != null) {
-      for (var business in orgs["organizations"]) {
-        businessWidgets.add(BusinessWidget(
-            number: business["number"],
-            name: business["name"],
-            type: business["type"],
-            description: business["description"],
-            resources: business["resources"],
-            contact: business["contact"]["email"]));
-        businessWidgets.add(const SizedBox(height: 25));
-      }
+  Future<List<Widget>> search(String term, var open) async {
+    final specialChars = RegExp(r'[\^$*.\[\]{}()?\-"!@#%&/\,><:;_~`+='"'"']');
+
+    if (term.contains(specialChars)) {
+      return Future.delayed(Duration(milliseconds: 1), () {
+        return [Center(child: Text("kys"))];
+      });
     }
+    var orgs = await Server.search(term);
+    print(orgs);
+    var businessWidgets = createBusinesses(orgs, (int i) {
+      open(i);
+    });
 
-    setState(() {});
-  }
-
-  Future<String> merch(String term) async {
-    businessWidgets.add(BusinessWidget(
-      number: 0,
-      name: "name",
-      type: "type",
-      description: "description",
-      resources: "resources",
-      contact: "contact email",
-    ));
-    businessWidgets.add(const SizedBox(height: 25));
-    setState(() {});
-    return "success";
+    return businessWidgets;
   }
 
   @override
@@ -63,7 +47,10 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: midnightGreen,
-          title: Text("CommunityConnect", style: TextStyle(color: Colors.white),),
+          title: Text(
+            "CommunityConnect",
+            style: TextStyle(color: Colors.white),
+          ),
           actions: [
             IconButton(
               onPressed: () async {
@@ -73,16 +60,38 @@ class _MainPageState extends State<MainPage> {
                 String response = "false";
                 response =
                     await Server.test().then((value) => value.toString());
-                return await showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      content: Text(response),
-                    );
-                  },
-                );
+                if (response == "true") {
+                  return await showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: SizedBox(
+                            height: 15,
+                            child: Center(child: Text("You are online!"))),
+                      );
+                    },
+                  );
+                } else {
+                  return await showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: SizedBox(
+                            height: 15,
+                            child: Center(
+                                child: Text(
+                              "Hmm, Something went wrong",
+                            ))),
+                      );
+                    },
+                  );
+                }
               },
-              icon: Icon(Icons.flash_on, color: electricBlue,),
+              icon: Icon(
+                Icons.flash_on,
+                color: electricBlue,
+              ),
+              tooltip: "Ping Server",
             ),
             IconButton(
                 onPressed: () async {
@@ -114,39 +123,50 @@ class _MainPageState extends State<MainPage> {
               const SizedBox(height: 25),
               SizedBox(
                   width: 450,
-                  child: TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                      hintText: 'Search...',
-                      hintStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontStyle: FontStyle.italic,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 325,
+                        child: TextField(
+                          controller: searchController,
+                          decoration: InputDecoration(
+                            hintText: 'Search...',
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                          onSubmitted: (value) {
+                            setState(() {
+                              searchTerm = value;
+                            });
+                          },
+                        ),
                       ),
-                    ),
-                    onSubmitted: (value) async {
-                      search(value);
-                    },
+                      SizedBox(width: 12.5),
+                      IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+                      SizedBox(width: 12.5),
+                      PopupMenuButton(itemBuilder: (context) {return {"Agriculture", "Art", "Construction", "Education", "Finance", "Health", "Law", "Manufacturing", "Non-Profit", "Technology"}.map((String choice) {
+                        return PopupMenuItem<String>(value: choice,child: Text(choice));}).toList();
+                      }
+                      )
+                    ],
                   )),
-              //This bit only causes problems
-              ElevatedButton(
-                onPressed: () async {
-                  merch("laremy");
-                },
-                child: Text('Click me'),
-              ),
               const SizedBox(height: 25),
-              FutureBuilder(future: compileBusinesses((int i) {
-                openBusiness(i);
-              }), builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return Expanded(
-                      child: SingleChildScrollView(
-                          child: Column(children: snapshot.data)));
-                } else {
-                  return SizedBox();
-                }
-              }),
+              FutureBuilder(
+                  future: search(searchTerm, (int i) {
+                    openBusiness(i);
+                  }),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return Expanded(
+                          child: SingleChildScrollView(
+                              child: Column(children: snapshot.data)));
+                    } else {
+                      return Text("what");
+                    }
+                  }),
             ],
           )),
     );
@@ -254,11 +274,7 @@ class BusinessWidget extends StatelessWidget {
 }
 
 compileBusinesses(var open) async {
-  // See changes to login routines fo details
-  //var path = join(dirname(Platform.script.toFilePath()), 'lib', 'data', 'orgs.json');
-  //var input = await File(path).readAsString();
   var input = await rootBundle.loadString('assets/orgs.json');
-  //var orgs = jsonDecode(input);
   var orgs = await jsonDecode(input);
   return createBusinesses(orgs, (int i) {
     open(i);
@@ -268,13 +284,13 @@ compileBusinesses(var open) async {
 Future<List<Widget>> createBusinesses(var orgs, var open) async {
   List<Widget> businessWList = [];
 
-  for (var business in orgs["organizations"]) {
+  //server json does not have numbers
+  for (var business in orgs["return"]["matches"]) {
     businessWList.add(BusinessWidget(
-        number: business["number"],
+        number: 1,
         name: business["name"],
         type: business["type"],
-        description:
-            "This is a very big business. It is very big. It is known for its largeness and humongosity. Very big. Like super duper big, like it is just so big. AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+        description: business["description"],
         resources: business["resources"],
         contact: business["contact"]["email"],
         onPressed: (int i) {
@@ -282,6 +298,6 @@ Future<List<Widget>> createBusinesses(var orgs, var open) async {
         }));
     businessWList.add(const SizedBox(height: 25));
   }
-
+  print(businessWList);
   return businessWList;
 }
