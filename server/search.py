@@ -1,5 +1,9 @@
 import json
 from search_algorithm import search
+import base64
+
+def de(input_str):
+  return base64.urlsafe_b64decode(input_str.replace('~', '=')).decode("utf-8")
 
 
 def jload(file):
@@ -30,6 +34,10 @@ def old_search_organization(data, search_term):
     return results
 
 def search_organization(data, search_term, search_parameters):
+
+    #for key, value in search_parameters.items():
+    #    search_parameters[key] = de(value)
+    
     input = {'search': search_term, 'organizations': data['organizations'], 'parameters': search_parameters}
     return search(input)
 
