@@ -27,6 +27,7 @@ def old_search_organization(data, search_term):
                     if search_term.lower() in str(sub_value).lower():
                         results.append(org)
                         break
+                      #Todo: Add another break??
             elif search_term.lower() in str(value).lower():
                 results.append(org)
                 break
