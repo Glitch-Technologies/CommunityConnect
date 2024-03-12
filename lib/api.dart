@@ -35,7 +35,7 @@ class Server {
     }
 
   static String buildRequest(String path, Map query, {bool encode = false}) {
-    String url = 'http://glitchtech.top:10/$path?';
+    String url = 'http://glitchtech.chaseinator.com:10/$path?';
     for (int i = 0; i < query.keys.length; i++) {
       if (encode == true) {
         url = '$url${query.keys.elementAt(i)}=${en(query.values.elementAt(i))}';
