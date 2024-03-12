@@ -75,10 +75,9 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             search_results = search.lookup(search_term, query_components)
             safe_search_results = {"return": search_results}
             self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
-
-	if p == "/edit":
-	    pass
-
+            
+        if p == "/edit":
+            pass
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
