@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                   bool isLoggedIn = await login(userCont.text, passCont.text);
                   if (isLoggedIn) {
                     // ignore: use_build_context_synchronously
-                    Navigator.pushNamedAndRemoveUntil(context, "/main_page/", (Route route) => false);
+                    Navigator.pushNamed(context, "/main_page/");
                   }
                 },
                 style: ButtonStyle(

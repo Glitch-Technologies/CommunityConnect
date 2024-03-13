@@ -53,7 +53,7 @@ class _BusinessPageState extends State<BusinessPage> {
                             return Center(
                               child: SizedBox(
                                 height: 500,
-                                width: 500,
+                                width: 800,
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: verdigris,
@@ -62,7 +62,7 @@ class _BusinessPageState extends State<BusinessPage> {
                                   child: Center(
                                     child: SizedBox(
                                         height: 440,
-                                        width: 460,
+                                        width: 760,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -160,7 +160,7 @@ class _BusinessPageState extends State<BusinessPage> {
                                 ),
                                 SizedBox(
                                   height: 500,
-                                  width: 500,
+                                  width: 800,
                                   child: Container(
                                     decoration: BoxDecoration(
                                         color: verdigris,
@@ -169,7 +169,7 @@ class _BusinessPageState extends State<BusinessPage> {
                                     child: Center(
                                         child: SizedBox(
                                       height: 440,
-                                      width: 460,
+                                      width: 760,
                                       child: Column(
                                         children: [
                                           SizedBox(
@@ -268,13 +268,13 @@ class _BusinessPageState extends State<BusinessPage> {
                                       width: 200,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          saveChanges(businessNum, [
-                                            nameCont.text,
-                                            typeCont.text,
-                                            descriptionCont.text,
-                                            resourcesCont.text,
-                                            contactCont.text
-                                          ]);
+                                          saveChanges(businessNum, {
+                                            "name": nameCont.text,
+                                            "type": typeCont.text,
+                                            "description": descriptionCont.text,
+                                            "resources": resourcesCont.text,
+                                            "contact": {"email": contactCont.text}
+                                          });
                                         },
                                         style: ButtonStyle(
                                             backgroundColor:
@@ -329,15 +329,6 @@ compileBusiness(int i) async {
   return orgs["organizations"][i - 1];
 }
 
-saveChanges(int num, List<String> properties) async {
-  var input = await rootBundle.loadString('assets/orgs.json');
-  var orgs = await jsonDecode(input);
-
-  orgs["organizations"][num - 1]["name"] = properties[0];
-  orgs["organizations"][num - 1]["type"] = properties[1];
-  orgs["organizations"][num - 1]["description"] = properties[2];
-  orgs["organizations"][num - 1]["resources"] = properties[3];
-  orgs["organizations"][num - 1]["contact"]["email"] = properties[4];
-
-  print(orgs);
+saveChanges(int num, properties) async {
+  
 }
