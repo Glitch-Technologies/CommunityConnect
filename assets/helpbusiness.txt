@@ -1,0 +1,6 @@
+Business Page:
+
+Welcome to the Business Page!
+Here you can view and edit properties of specific businesses
+Use the pencil icon to switch between viewing mode and editing mode
+When in editing mode, click the "save changes" button to save your changes to the server

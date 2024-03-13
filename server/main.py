@@ -3,6 +3,7 @@ import json
 from urllib.parse import urlparse
 import os
 import base64
+from edit_orgs import edit_orgs
 
 # import insta
 # For instagram API, only activate after configuring session.json(See Starlight)
@@ -70,6 +71,13 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             self.wfile.write(bytes("Nice work Vincent\n", "utf-8"))
 
         if p == "/search":
+            search_term = de(query_components["term"])
+            query_components.pop("term", None)
+            search_results = search.lookup(search_term, query_components)
+            safe_search_results = {"return": search_results}
+            self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
+
+        if p == "/upload":
             search_term = query_components["term"]
             query_components.pop("term", None)
             search_results = search.lookup(search_term, query_components)
@@ -90,9 +98,9 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             if len(query) > 0:
                 query_components = get_query(query)
         
-        if self.path == "/upload":
-            jwrite("orgs.json", post_data)
-            self.wfile.write(bytes(json.dumps({"success": 1})))
+        #if self.path == "/upload":
+        #    edit_orgs(post_data)
+        #    self.wfile.write(bytes(json.dumps({"success": 1})))
 
 
         

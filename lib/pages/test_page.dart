@@ -92,47 +92,7 @@ class _TestPageState extends State<TestPage> {
                             ),
                         ),
                         Stack(
-                            children: [
-                                ElevatedButton(
-                                    onPressed: () async {
-                                      try {
-                                        // Replace 'https://example.com' with the URL of your server.
-                                        final response = await http.get(Uri.parse('http://glitchtech.top:10/supersecret'));                                        
-                                        
-
-                                        // If the server returns a 200 OK response, then parse the JSON.
-                                        if (response.statusCode == 200) {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                content: Text('Connection successful'),
-                                              );
-                                            },
-                                          );
-                                        } else {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                content: Text('Connection failed'),
-                                              );
-                                            },
-                                          );
-                                        }
-                                      } catch (e) {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return AlertDialog(
-                                              content: Text('An error occurred: $e'),
-                                            );
-                                          },
-                                        );
-                                      }
-                                    },
-                                    child: Text('Test Connection'),
-                                ),                       
+                            children: [                      
                                 Align(
                                     alignment: Alignment.bottomLeft,
                                     child: Padding(
@@ -140,27 +100,15 @@ class _TestPageState extends State<TestPage> {
                                         child: ElevatedButton.icon(
                                             onPressed: () async {
                                                 // Button logic here
-                                                //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
-                                                final response = await Server.tryConnect();
-                                                if (response == true) {
+                                                final String response = await Server.tryConnectAll(changeDNS: false);
                                                 showDialog(
                                                     context: context,
                                                     builder: (BuildContext context) {
                                                     return AlertDialog(
-                                                        content: Text('Connection successful'),
+                                                        content: Text("$response"),
                                                     );
                                                     },
                                                 );
-                                                } else {
-                                                showDialog(
-                                                    context: context,
-                                                    builder: (BuildContext context) {
-                                                    return AlertDialog(
-                                                        content: Text('Connection failed'),
-                                                    );
-                                                    },
-                                                );
-                                                }
                                             },
                                             icon: Icon(Icons.flash_on),
                                             label: Text('Connection Test'),
