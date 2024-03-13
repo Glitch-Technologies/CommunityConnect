@@ -100,10 +100,7 @@ class _TestPageState extends State<TestPage> {
                                         child: ElevatedButton.icon(
                                             onPressed: () async {
                                                 // Button logic here
-                                                //final String formattedResponse = await Server.tryConnect().then((value) => value.toString());
                                                 final String response = await Server.tryConnectAll();
-                                                //final response = await Server.tryConnect();
-                                                //if (response == true) {
                                                 showDialog(
                                                     context: context,
                                                     builder: (BuildContext context) {
@@ -112,18 +109,6 @@ class _TestPageState extends State<TestPage> {
                                                     );
                                                     },
                                                 );
-                                                
-                                                /*} else {
-                                                showDialog(
-                                                    context: context,
-                                                    builder: (BuildContext context) {
-                                                    return AlertDialog(
-                                                        content: Text('Connection failed'),
-                                                    );
-                                                    },
-                                                );
-                                                }
-                                                */
                                             },
                                             icon: Icon(Icons.flash_on),
                                             label: Text('Connection Test'),

@@ -38,12 +38,12 @@ class Server {
     return await "true";
   }
 
-  static Future<dynamic> tryConnectAll() async {
+  static Future<dynamic> tryConnectAll({bool changeDNS = false}) async {
     int olddns = dns;
     String result = "";
     dns = 0;
     
-    for (int i = 0; i < urlbank.length; i++) {
+    for (int i = urlbank.length-1; i > 0; i--) {
       bool t = await tryConnect();
       
       if (t) {
@@ -86,8 +86,9 @@ class Server {
 
   static Future<dynamic> fetchData(String request, {bool json = true, bool timeout = false, bool post = false}) async {
     try {
+      var response;
       if (timeout) {
-        var response = await http.get(Uri.parse(request)).timeout(
+        response = await http.get(Uri.parse(request)).timeout(
           const Duration(seconds: 1),
           onTimeout: () {
             // Time has run out, do what you wanted to do.
@@ -95,7 +96,7 @@ class Server {
           },
         );
       } else {
-        var response = await http.get(Uri.parse(request))
+        response = await http.get(Uri.parse(request));
       }
       if (response.statusCode == 200) {
         dynamic data;
