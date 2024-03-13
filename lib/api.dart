@@ -23,7 +23,7 @@ class Server {
   }
 
   static Future<dynamic> search(String term, Map<String, dynamic> values) async {
-    String request = buildRequest("search", {"term": term, ...values}, encode: true);
+    String request = buildRequest("search", {"term": term, ...values}, encode: false);
     var response = await fetchData(request);
     return response;
   }
