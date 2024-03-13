@@ -56,7 +56,7 @@ class _MainPageState extends State<MainPage> {
             IconButton(
               onPressed: () async {
                 // Button logic here
-                final String response = await Server.tryConnectAll(changeDNS: false);
+                final String response = await Server.tryConnectAll(changeDNS: true);
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
