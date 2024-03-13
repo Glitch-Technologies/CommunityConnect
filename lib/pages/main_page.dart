@@ -34,6 +34,7 @@ class _MainPageState extends State<MainPage> {
         return [Center(child: Text("kys"))];
       });
     }
+    //Todo: please break up search params here
     var orgs = await Server.search(term, {});
     print(orgs);
     var businessWidgets = createBusinesses(orgs, (int i) {
