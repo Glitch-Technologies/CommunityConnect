@@ -48,7 +48,9 @@ class Server {
       
       if (t) {
         result = "$result${urlbank[i]}: Connection Successful\n";
-        print(urlbank[i]);
+        if (changeDNS) {
+          olddns = i;
+        }
       } else {
         result = "$result${urlbank[i]}: Connection Failed\n";
       }

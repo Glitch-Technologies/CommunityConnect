@@ -100,7 +100,7 @@ class _TestPageState extends State<TestPage> {
                                         child: ElevatedButton.icon(
                                             onPressed: () async {
                                                 // Button logic here
-                                                final String response = await Server.tryConnectAll();
+                                                final String response = await Server.tryConnectAll(changeDNS: false);
                                                 showDialog(
                                                     context: context,
                                                     builder: (BuildContext context) {
