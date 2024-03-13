@@ -29,7 +29,19 @@ class _BusinessPageState extends State<BusinessPage> {
             title: Text("CommunityConnect"),
             actions: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                  // Show help popup logic here
+                  var helpmessage =
+                      await rootBundle.loadString('assets/helpBusiness.txt');
+                  return await showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Text(helpmessage),
+                      );
+                    },
+                  );
+                },
                   icon: Icon(Icons.question_mark, color: richBlack),
                   tooltip: "Help"),
               SizedBox(width: 75),
