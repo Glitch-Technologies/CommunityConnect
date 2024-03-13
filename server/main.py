@@ -71,7 +71,7 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             self.wfile.write(bytes("Nice work Vincent\n", "utf-8"))
 
         if p == "/search":
-            search_term = query_components["term"]
+            search_term = de(query_components["term"])
             query_components.pop("term", None)
             search_results = search.lookup(search_term, query_components)
             safe_search_results = {"return": search_results}
