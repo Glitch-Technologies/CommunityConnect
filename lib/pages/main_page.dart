@@ -16,13 +16,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  String searchTerm = "laremy";
+  String searchTerm = "";
+  String genreFilter = "";
   final searchController = SearchController();
 
   void openBusiness(int i) {
     businessNum = i;
-    Navigator.pushNamedAndRemoveUntil(
-        context, "/business_page/", (Route route) => false);
+    Navigator.pushNamed(
+        context, "/business_page/");
   }
 
   Future<List<Widget>> search(String term, var open) async {
@@ -34,7 +35,6 @@ class _MainPageState extends State<MainPage> {
       });
     }
     var orgs = await Server.search(term);
-    //String orgs = await Server.tryConnect().then((value) => value.toString());
     print(orgs);
     var businessWidgets = createBusinesses(orgs, (int i) {
       open(i);
@@ -76,7 +76,7 @@ class _MainPageState extends State<MainPage> {
                 onPressed: () async {
                   // Show help popup logic here
                   var helpmessage =
-                      await rootBundle.loadString('assets/helpmessage.txt');
+                      await rootBundle.loadString('assets/helpbusiness.txt');
                   return await showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -126,7 +126,7 @@ class _MainPageState extends State<MainPage> {
                       SizedBox(width: 12.5),
                       IconButton(onPressed: () {}, icon: Icon(Icons.search)),
                       SizedBox(width: 12.5),
-                      PopupMenuButton(itemBuilder: (context) {return {"Agriculture", "Art", "Construction", "Education", "Finance", "Health", "Law", "Manufacturing", "Non-Profit", "Technology"}.map((String choice) {
+                      PopupMenuButton(itemBuilder: (context) {return {"None", "Agriculture", "Art", "Construction", "Education", "Finance", "Health", "Law", "Manufacturing", "Non-Profit", "Technology"}.map((String choice) {
                         return PopupMenuItem<String>(value: choice,child: Text(choice));}).toList();
                       }
                       )
@@ -266,7 +266,7 @@ Future<List<Widget>> createBusinesses(var orgs, var open) async {
   //server json does not have numbers
   for (var business in orgs["return"]["matches"]) {
     businessWList.add(BusinessWidget(
-        number: 1,
+        number: business["number"],
         name: business["name"],
         type: business["type"],
         description: business["description"],
