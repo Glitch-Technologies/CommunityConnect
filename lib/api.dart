@@ -39,7 +39,7 @@ class Server {
   }
 
   static Future<dynamic> tryConnectAll({bool changeDNS = false}) async {
-    int olddns = dns;
+    int finalDNS = dns;
     String result = "";
     dns = 0;
     
@@ -49,7 +49,7 @@ class Server {
       if (t) {
         result = "$result${urlbank[i]}: Connection Successful\n";
         if (changeDNS) {
-          olddns = i;
+          finalDNS = i;
         }
       } else {
         result = "$result${urlbank[i]}: Connection Failed\n";
@@ -57,7 +57,8 @@ class Server {
       
       dns++;
     }
-    dns = olddns;
+    dns = finalDNS;
+    result = "$resultActive DNS=${urlbank[olddns]}\n";
     return result;
   }
 
