@@ -28,8 +28,14 @@ class Server {
     return response;
   }
 
-  static Future<bool> test() async {
-    return await true;
+  static Future<dynamic> upload(String data) async {
+    String request = buildRequest("upload", {"data": data});
+    var response = await fetchData(request);
+    return response;
+  }
+
+  static Future<String> test() async {
+    return await "true";
   }
 
   static Future<dynamic> tryConnectAll() async {
@@ -55,8 +61,8 @@ class Server {
 
   static Future<bool> tryConnect() async {
       String request = buildRequest("supersecret", {});
-      final response = await fetchData(request, json: false);
-      if (response is TimeoutException) {
+      final response = await fetchData(request, json: false, timeout: true);
+      if (response.contains("Error")) {
         return false;
       } else {
         return true;
@@ -78,18 +84,32 @@ class Server {
     return url;
   }
 
-  static Future<dynamic> fetchData(String request, {bool json = true}) async {
-    var response = await http.get(Uri.parse(request));
-    if (response.statusCode == 200) {
-      dynamic data;
-      if (json) {
-        data = jsonDecode(response.body);
+  static Future<dynamic> fetchData(String request, {bool json = true, bool timeout = false, bool post = false}) async {
+    try {
+      if (timeout) {
+        var response = await http.get(Uri.parse(request)).timeout(
+          const Duration(seconds: 1),
+          onTimeout: () {
+            // Time has run out, do what you wanted to do.
+            return http.Response('Error', 408); // Request Timeout response status code
+          },
+        );
       } else {
-        data = response.body;
+        var response = await http.get(Uri.parse(request))
       }
-      return data;
-    } else {
-      return "";
+      if (response.statusCode == 200) {
+        dynamic data;
+        if (json) {
+          data = jsonDecode(response.body);
+        } else {
+          data = response.body;
+        }
+        return data;
+      } else {
+        return "Error: ${response.statusCode}";
+      }
+    } catch (e) {
+      return "Error: $e";
     }
   }
 }
