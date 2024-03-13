@@ -58,7 +58,7 @@ class Server {
       dns++;
     }
     dns = finalDNS;
-    result = "$resultActive DNS=${urlbank[dns]}\n";
+    result = "$result Active DNS=${urlbank[dns]}\n";
     return result;
   }
 
