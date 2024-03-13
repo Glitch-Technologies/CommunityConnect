@@ -22,7 +22,11 @@ class Server {
     return encodedData.replaceAll('=', '~');
   }
 
-  static Future<dynamic> search(String term) async {
+  static Future<dynamic> search(String term, Map<String, dynamic> values) async {
+    String request = buildRequest("search", {"term": term, ...values}, encode: true);
+    var response = await fetchData(request);
+    return response;
+  }
     String request = buildRequest("search", {"term": term}, encode: true);
     var response = await fetchData(request);
     return response;
