@@ -9,6 +9,14 @@ import 'dart:convert';
 
 class Server {
 
+  static List<String> urlbank = [
+    "glitchtech.top", 
+    "glitchtech.chaseinator.com",
+    "glitchtech.tedfullwood.com", 
+    "50.115.170.113",
+  ];
+  static int dns = 1;
+
   static String en(String data) {
     String encodedData = base64Url.encode(utf8.encode(data));
     return encodedData.replaceAll('=', '~');
@@ -24,6 +32,27 @@ class Server {
     return await true;
   }
 
+  static Future<dynamic> tryConnectAll() async {
+    int olddns = dns;
+    String result = "";
+    dns = 0;
+    
+    for (int i = 0; i < urlbank.length; i++) {
+      bool t = await tryConnect();
+      
+      if (t) {
+        result = "$result${urlbank[i]}: Connection Successful\n";
+        print(urlbank[i]);
+      } else {
+        result = "$result${urlbank[i]}: Connection Failed\n";
+      }
+      
+      dns++;
+    }
+    dns = olddns;
+    return result;
+  }
+
   static Future<bool> tryConnect() async {
       String request = buildRequest("supersecret", {});
       final response = await fetchData(request, json: false);
@@ -35,7 +64,7 @@ class Server {
     }
 
   static String buildRequest(String path, Map query, {bool encode = false}) {
-    String url = 'http://glitchtech.chaseinator.com:10/$path?';
+    String url = 'http://${urlbank[dns]}:10/$path?';
     for (int i = 0; i < query.keys.length; i++) {
       if (encode == true) {
         url = '$url${query.keys.elementAt(i)}=${en(query.values.elementAt(i))}';
