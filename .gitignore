@@ -12,6 +12,7 @@ pyproject.toml
 
 # Server-side logs
 server/nohup.out
+server/orgs.json
 
 # Miscellaneous
 *.class

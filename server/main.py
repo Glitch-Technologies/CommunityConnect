@@ -3,6 +3,7 @@ import json
 from urllib.parse import urlparse
 import os
 import base64
+from edit_orgs import edit_orgs
 
 # import insta
 # For instagram API, only activate after configuring session.json(See Starlight)
@@ -91,7 +92,7 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
                 query_components = get_query(query)
         
         if self.path == "/upload":
-            jwrite("orgs.json", post_data)
+            edit_orgs(post_data)
             self.wfile.write(bytes(json.dumps({"success": 1})))
 
 
