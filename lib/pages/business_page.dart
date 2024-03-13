@@ -342,6 +342,6 @@ compileBusiness(int i) async {
   return orgs["organizations"][i - 1];
 }
 
-saveChanges(int num, properties) async {
-  Server.upload();
+saveChanges(int num, Map<String, dynamic> properties) async {
+  await Server.upload(num, properties);
 }

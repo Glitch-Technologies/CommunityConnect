@@ -23,13 +23,13 @@ class Server {
   }
 
   static Future<dynamic> search(String term) async {
-    String request = buildRequest("search", {"term": term});
+    String request = buildRequest("search", {"term": term}, encode: true);
     var response = await fetchData(request);
     return response;
   }
 
-  static Future<dynamic> upload(String data) async {
-    String request = buildRequest("upload", {"data": data});
+  static Future<dynamic> upload(int num, Map<String, dynamic> properties) async {
+    String request = buildRequest("upload", {"num": num, "input": properties}, encode: true);
     var response = await fetchData(request);
     return response;
   }
