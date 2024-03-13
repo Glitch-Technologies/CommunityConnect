@@ -364,7 +364,136 @@
         "email": "lisa@globetrotterschools.net"
       },
       "description": "Globetrotter Schools Network is an International School Network providing a diverse curriculum and global exchange programs, with Lisa Anderson overseeing admissions as the Admissions Director."
+    },
+    {  
+      "number": 29,
+      "name": "Main Street Diner",
+      "type": "Restaurant",
+      "genre": "Food",
+      "resources": "Local produce, experienced chefs",
+      "contact": {
+        "name": "Alice Johnson",
+        "position": "Owner",
+        "email": "alice@mainstreetdiner.com"
+      },
+      "description": "Main Street Diner is a cozy restaurant serving delicious meals made with local produce and prepared by experienced chefs, owned by Alice Johnson."
+    },
+    {
+      "number": 30,
+      "name": "Corner Hardware Store",
+      "type": "Hardware Store",
+      "genre": "Retail",
+      "resources": "Wide range of tools and supplies",
+      "contact": {
+        "name": "Tom Smith",
+        "position": "Manager",
+        "email": "tom@cornerhardware.com"
+      },
+      "description": "Corner Hardware Store is a local hardware store offering a wide range of tools and supplies, managed by Tom Smith."
+    },
+    {
+      "number": 31,
+      "name": "Riverfront Cafe",
+      "type": "Cafe",
+      "genre": "Food",
+      "resources": "Scenic location, locally roasted coffee",
+      "contact": {
+        "name": "Emily Brown",
+        "position": "Owner",
+        "email": "emily@riverfrontcafe.com"
+      },
+      "description": "Riverfront Cafe is a charming cafe located by the river, known for its scenic views and locally roasted coffee, owned by Emily Brown."
+    },
+    {
+      "number": 32,
+      "name": "Valley View Inn",
+      "type": "Bed and Breakfast",
+      "genre": "Hospitality",
+      "resources": "Cozy rooms, homemade breakfast",
+      "contact": {
+        "name": "Michael Wilson",
+        "position": "Innkeeper",
+        "email": "michael@valleyviewinn.com"
+      },
+      "description": "Valley View Inn is a welcoming bed and breakfast offering cozy rooms and a delicious homemade breakfast, run by Innkeeper Michael Wilson."
+    },
+    {
+      "number": 33,
+      "name": "Hilltop Bakery",
+      "type": "Bakery",
+      "genre": "Food",
+      "resources": "Freshly baked bread, pastries",
+      "contact": {
+        "name": "Sarah Davis",
+        "position": "Baker",
+        "email": "sarah@hilltopbakery.com"
+      },
+      "description": "Hilltop Bakery is a delightful bakery known for its freshly baked bread and pastries, managed by Baker Sarah Davis."
+    },
+    {
+      "number": 34,
+      "name": "Pinecrest Nursery",
+      "type": "Nursery",
+      "genre": "Retail",
+      "resources": "Wide variety of plants, gardening supplies",
+      "contact": {
+        "name": "John Green",
+        "position": "Owner",
+        "email": "john@pinecrestnursery.com"
+      },
+      "description": "Pinecrest Nursery is a local nursery offering a wide variety of plants and gardening supplies, owned by John Green."
+    },
+    {
+      "number": 35,
+      "name": "Sunshine Laundromat",
+      "type": "Laundromat",
+      "genre": "Services",
+      "resources": "Self-service machines, drop-off service",
+      "contact": {
+        "name": "Lisa White",
+        "position": "Manager",
+        "email": "lisa@sunshinelaundromat.com"
+      },
+      "description": "Sunshine Laundromat is a convenient laundromat offering self-service machines and a drop-off service, managed by Lisa White."
+    },
+    {
+      "number": 36,
+      "name": "Mountainview Pharmacy",
+      "type": "Pharmacy",
+      "genre": "Health",
+      "resources": "Prescription drugs, over-the-counter medications",
+      "contact": {
+        "name": "David Robinson",
+        "position": "Pharmacist",
+        "email": "david@mountainviewpharmacy.com"
+      },
+      "description": "Mountainview Pharmacy is a local pharmacy providing prescription drugs and over-the-counter medications, with Pharmacist David Robinson offering expert advice."
+    },
+    {
+      "number": 37,
+      "name": "Riverside Books",
+      "type": "Bookstore",
+      "genre": "Retail",
+      "resources": "Wide selection of books, cozy reading nooks",
+      "contact": {
+        "name": "Karen Taylor",
+        "position": "Owner",
+        "email": "karen@riversidebooks.com"
+      },
+      "description": "Riverside Books is a charming bookstore offering a wide selection of books and cozy reading nooks, owned by Karen Taylor."
+    },
+    {
+      "number": 38,
+      "name": "Maplewood Hardware",
+      "type": "Hardware Store",
+      "genre": "Retail",
+      "resources": "Tools, home improvement supplies",
+      "contact": {
+        "name": "James Miller",
+        "position": "Manager",
+        "email": "james@maplewoodhardware.com"
+      },
+      "description": "Maplewood Hardware is a local hardware store providing tools and home improvement supplies, managed by James Miller."
     }
   ]
 }
-      

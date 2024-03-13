@@ -56,37 +56,15 @@ class _MainPageState extends State<MainPage> {
             IconButton(
               onPressed: () async {
                 // Button logic here
-                //String formattedResponse = await Server.tryConnect().then((value) => value.toString());
-                //TODO: Fix this
-                String response = "false";
-                response =
-                    await Server.test().then((value) => value.toString());
-                if (response == "true") {
-                  return await showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        content: SizedBox(
-                            height: 15,
-                            child: Center(child: Text("You are online!"))),
-                      );
-                    },
-                  );
-                } else {
-                  return await showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        content: SizedBox(
-                            height: 15,
-                            child: Center(
-                                child: Text(
-                              "Hmm, Something went wrong",
-                            ))),
-                      );
-                    },
-                  );
-                }
+                final String response = await Server.tryConnectAll(changeDNS: true);
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                  return AlertDialog(
+                      content: Text("$response"),
+                    );
+                  },
+                );
               },
               icon: Icon(
                 Icons.flash_on,
