@@ -43,7 +43,7 @@ class Server {
     String result = "";
     dns = 0;
     
-    for (int i = urlbank.length-1; i > 0; i--) {
+    for (int i = urlbank.length-1; i >= 0; i--) {
       bool t = await tryConnect();
       
       if (t) {
