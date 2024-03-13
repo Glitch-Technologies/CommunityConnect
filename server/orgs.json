@@ -1,5 +1,6 @@
 {
-  "organizations": [
+  "organizations":
+      [
     {
       "number": 1,
       "name": "TechSphere Inc.",
@@ -310,7 +311,7 @@
         "position": "Language Program Coordinator",
         "email": "miguel@languagelinkinstitute.com"
       },
-      "description": "LanguageLink Institute operates as a Language Learning Center, offering immersive language programs and cultural exchanges, with Miguel Hernandez coordinating language programs."
+     "description": "LanguageLink Institute operates as a Language Learning Center, offering immersive language programs and cultural exchanges, with Miguel Hernandez coordinating language programs."
     },
     {
       "number": 25,

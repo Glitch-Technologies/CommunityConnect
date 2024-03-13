@@ -75,7 +75,9 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             search_results = search.lookup(search_term, query_components)
             safe_search_results = {"return": search_results}
             self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
-
+            
+        if p == "/edit":
+            pass
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
@@ -97,9 +99,9 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "application/json")
         # Disable CORS security
-        #self.send_header("Access-Control-Allow-Origin", "*")
-        #self.send_header("Access-Control-Allow-Methods", "*")
-        #self.send_header("Access-Control-Allow-Headers", "*")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "*")
+        self.send_header("Access-Control-Allow-Headers", "*")
         self.end_headers()
 
 
