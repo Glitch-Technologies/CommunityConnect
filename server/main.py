@@ -78,11 +78,11 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
 
         if p == "/upload":
-            search_term = query_components["term"]
-            query_components.pop("term", None)
-            search_results = search.lookup(search_term, query_components)
-            safe_search_results = {"return": search_results}
-            self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
+            num = de(query_components["num"])
+            upload_input = de(query_components["input"])
+            
+
+            self.wfile.write(bytes(json.dumps({"success": 1}), "utf-8"))
             
         if p == "/edit":
             pass

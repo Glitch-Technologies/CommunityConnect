@@ -27,10 +27,6 @@ class Server {
     var response = await fetchData(request);
     return response;
   }
-    String request = buildRequest("search", {"term": term}, encode: true);
-    var response = await fetchData(request);
-    return response;
-  }
 
   static Future<dynamic> upload(int num, Map<String, dynamic> properties) async {
     String request = buildRequest("upload", {"num": num, "input": properties}, encode: true);
