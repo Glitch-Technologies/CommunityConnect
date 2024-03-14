@@ -367,5 +367,8 @@ class _BusinessPageState extends State<BusinessPage> {
 saveChanges(int num, Map<String, dynamic> properties) async {
   print('$num');
   print('$properties');
-  await Server.upload(num, properties);
+  
+  String jsonProperties = jsonEncode(properties);
+  print(jsonProperties);
+  await Server.upload(num, jsonProperties);
 }

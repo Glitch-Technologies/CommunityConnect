@@ -35,6 +35,8 @@ def search(input):
 
         # for each parameter, check if org parameter matches, if not -> remove the org
         for key in input['parameters']:
+            if str(input['parameters'][key]).lower() == "none":
+                continue
             if key in org:
                 if str(org[key]).lower() != str(input['parameters'][key]).lower():
                     del output['matches'][i]
