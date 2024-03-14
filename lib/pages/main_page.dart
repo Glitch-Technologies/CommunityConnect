@@ -83,7 +83,7 @@ class _MainPageState extends State<MainPage> {
                 onPressed: () async {
                   // Show help popup logic here
                   var helpmessage =
-                      await rootBundle.loadString('assets/helpbusiness.txt');
+                      await rootBundle.loadString('assets/helpmessage.txt');
                   return await showDialog(
                     context: context,
                     builder: (BuildContext context) {
