@@ -7,6 +7,7 @@ import 'dart:async';
 import "package:http/http.dart" as http;
 import 'dart:convert';
 
+// Server class: Handles all API calls
 class Server {
 
   // Bank of possible endpoints for server contact to ensure reliability
