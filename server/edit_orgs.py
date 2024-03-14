@@ -18,7 +18,7 @@ def edit_orgs(num, input):
     
     json_out = json.dumps(out, indent=2)
     
-    with open("server/orgs.json", "w") as outfile:
+    with open("orgs.json", "w") as outfile:
         outfile.write(json_out)
 
 # example function usage below
