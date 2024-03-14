@@ -15,8 +15,10 @@ serverPort = 10
 
 #Modern URL-safe strings. See GlitchChat.
 def de(input_str):
-  return base64.urlsafe_b64decode(input_str.replace('~', '=')).decode("utf-8")
-#Kept for legacy. Server will hopefully never need to encode. 
+  a = input_str.replace('~', '=')
+  return base64.urlsafe_b64decode(a).decode("utf-8")
+  #Kept for legacy. Server will hopefully never need to encode. 
+
 def en(input):
   return base64.urlsafe_b64encode(bytes(input, "utf-8")).replace(b'=', b'~')
 
@@ -53,6 +55,7 @@ def get_query(query):
 
 class CommunityConnectServer(BaseHTTPRequestHandler):
     def do_GET(self):
+        print(self.path)
         p = self.path.split("?")[0]
         # Refer to p[0] for get path
         query = urlparse(self.path).query
@@ -71,11 +74,19 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             self.wfile.write(bytes("Nice work Vincent\n", "utf-8"))
 
         if p == "/search":
-            search_term = query_components["term"]
+            search_term = de(query_components["term"])
             query_components.pop("term", None)
-            search_results = search.lookup(search_term, query_components)
+            search_results = search.lookup(search_term, {key: de(value) for key, value in query_components.items()})
+            #search_results = search.lookup(search_term, query_components)
             safe_search_results = {"return": search_results}
             self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
+
+        if p == "/upload":
+            num = int(de(query_components["num"]))
+            upload_input = de(query_components["input"])
+            edit_orgs(num, upload_input)
+
+            self.wfile.write(bytes(json.dumps({"success": "1"}), "utf-8"))
             
         if p == "/edit":
             pass
@@ -91,9 +102,9 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             if len(query) > 0:
                 query_components = get_query(query)
         
-        if self.path == "/upload":
-            edit_orgs(post_data)
-            self.wfile.write(bytes(json.dumps({"success": 1})))
+        #if self.path == "/upload":
+        #    edit_orgs(post_data)
+        #    self.wfile.write(bytes(json.dumps({"success": 1})))
 
 
         

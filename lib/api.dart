@@ -22,15 +22,20 @@ class Server {
     return encodedData.replaceAll('=', '~');
   }
 
-  static Future<dynamic> search(String term) async {
-    String request = buildRequest("search", {"term": term});
+  static Future<dynamic> search(String term, Map<String, dynamic> values) async {
+    String request = buildRequest("search", {"term": term, ...values}, encode: true);
     var response = await fetchData(request);
+    String responseData = response.toString();
+    print(responseData);
     return response;
   }
 
-  static Future<dynamic> upload(String data) async {
-    String request = buildRequest("upload", {"data": data});
+  static Future<dynamic> upload(int num, Map<String, dynamic> properties) async {
+    String request = buildRequest("upload", {"num": "$num",}, encode: true);
+    // "input": "$properties"},
+    print(request);
     var response = await fetchData(request);
+    print("$response");
     return response;
   }
 

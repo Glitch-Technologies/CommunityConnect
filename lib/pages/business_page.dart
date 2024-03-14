@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import '../api.dart';
 import '../assets/colors.dart';
 import 'main_page.dart';
+import "../api.dart";
 
 class BusinessPage extends StatefulWidget {
   const BusinessPage({super.key});
@@ -369,4 +370,9 @@ compileBusiness(int i) async {
   return orgs["organizations"][i - 1];
 }
 
-saveChanges(int num, properties) async {}
+
+saveChanges(int num, Map<String, dynamic> properties) async {
+  print('$num');
+  print('$properties');
+  await Server.upload(num, properties);
+}
