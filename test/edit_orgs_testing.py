@@ -1,11 +1,9 @@
 import json
 
 def edit_orgs(num, input):
-    # Note from greenturtle537 (Owner)
-    # Your function has spoiled. Complaing about string indices must be integers in logs.
-    # I pass num as an "int" and input as a whatever Vincent did.
-    with open("orgs.json") as f:
-        orgs = json.load(f)
+    with open("test/orgs_testing.json") as f:
+        orgs = json.load(f)['organizations']
+    
     for key in input:
         if key != 'contact':
 
