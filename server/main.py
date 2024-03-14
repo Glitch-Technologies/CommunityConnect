@@ -82,7 +82,7 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
             self.wfile.write(bytes(json.dumps(safe_search_results), "utf-8"))
 
         if p == "/upload":
-            num = de(query_components["num"])
+            num = int(de(query_components["num"]))
             upload_input = de(query_components["input"])
             edit_orgs(num, upload_input)
 
