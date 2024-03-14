@@ -1,7 +1,7 @@
 import json
 
 def edit_orgs(num, input):
-    with open("server/orgs.json") as f:
+    with open("orgs.json") as f:
         orgs = json.load(f)['organizations']
     
     print(f"orgs: {orgs[num-1]}")
@@ -17,8 +17,10 @@ def edit_orgs(num, input):
     out = {'organizations': orgs}
     
     json_out = json.dumps(out, indent=2)
+    print(json_out)
     
-    with open("server/orgs.json", "w") as outfile:
+    
+    with open("orgs.json", "w") as outfile:
         outfile.write(json_out)
 
 # example function usage below
