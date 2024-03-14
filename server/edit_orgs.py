@@ -17,6 +17,7 @@ def edit_orgs(num, input):
     out = {'organizations': orgs}
     
     json_out = json.dumps(out, indent=2)
+    print(json_out)
     
     with open("orgs.json", "w") as outfile:
         outfile.write(json_out)
