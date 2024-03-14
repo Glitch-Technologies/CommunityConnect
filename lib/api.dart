@@ -31,7 +31,8 @@ class Server {
   }
 
   static Future<dynamic> upload(int num, Map<String, dynamic> properties) async {
-    String request = buildRequest("upload", {"num": "$num", "input": "$properties"}, encode: true);
+    String request = buildRequest("upload", {"num": "$num",}, encode: true);
+    // "input": "$properties"},
     print(request);
     var response = await fetchData(request);
     print("$response");
