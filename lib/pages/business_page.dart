@@ -342,6 +342,9 @@ compileBusiness(int i) async {
   return orgs["organizations"][i - 1];
 }
 
+
 saveChanges(int num, Map<String, dynamic> properties) async {
+  print('$num');
+  print('$properties');
   await Server.upload(num, properties);
 }

@@ -1,2 +1,6 @@
 from main import en
-print(en("abcd"))
+from main import de
+v = en("laremy")
+print(v)
+#print(de(v))
+print(de("dGVj"))
