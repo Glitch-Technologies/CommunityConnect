@@ -1,7 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../api.dart';
 import '../assets/colors.dart';
 import 'main_page.dart';
 
@@ -29,20 +32,43 @@ class _BusinessPageState extends State<BusinessPage> {
             title: Text("CommunityConnect"),
             actions: [
               IconButton(
-                  onPressed: () async {
-                  // Show help popup logic here
-                  var helpmessage =
-                      await rootBundle.loadString('assets/helpBusiness.txt');
-                  return await showDialog(
+                onPressed: () async {
+                  // Button logic here
+                  final String response =
+                      await Server.tryConnectAll(changeDNS: true);
+                  showDialog(
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        content: Text(helpmessage),
+                        content: Text("$response"),
                       );
                     },
                   );
                 },
-                  icon: Icon(Icons.question_mark, color: richBlack),
+                icon: Icon(
+                  Icons.flash_on,
+                  color: electricBlue,
+                ),
+                tooltip: "Ping Server",
+              ),
+              IconButton(
+                  onPressed: () async {
+                    // Show help popup logic here
+                    var helpmessage =
+                        await rootBundle.loadString('assets/helpbusiness.txt');
+                    return await showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content: Text(helpmessage),
+                        );
+                      },
+                    );
+                  },
+                  icon: Icon(
+                    Icons.help_outline,
+                    color: electricBlue,
+                  ),
                   tooltip: "Help"),
               SizedBox(width: 75),
             ]),
@@ -285,7 +311,9 @@ class _BusinessPageState extends State<BusinessPage> {
                                             "type": typeCont.text,
                                             "description": descriptionCont.text,
                                             "resources": resourcesCont.text,
-                                            "contact": {"email": contactCont.text}
+                                            "contact": {
+                                              "email": contactCont.text
+                                            }
                                           });
                                         },
                                         style: ButtonStyle(
@@ -341,6 +369,4 @@ compileBusiness(int i) async {
   return orgs["organizations"][i - 1];
 }
 
-saveChanges(int num, properties) async {
-  
-}
+saveChanges(int num, properties) async {}

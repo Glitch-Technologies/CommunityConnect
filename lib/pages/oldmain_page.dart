@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
 
   Future<void> search(String term) async {
     businessWidgets = [];
-    var orgs = await Server.search(term);
+    var orgs = await Server.search({"term": term});
     if (orgs != null) {
       for (var business in orgs["organizations"]) {
         businessWidgets.add(BusinessWidget(
