@@ -1,7 +1,7 @@
 import json
 
 def edit_orgs(num, input):
-    with open("server/orgs.json") as f:
+    with open("orgs.json") as f:
         orgs = json.load(f)['organizations']
     
     print(f"orgs: {orgs[num-1]}")
