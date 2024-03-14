@@ -48,7 +48,6 @@ sam.code-profile
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
 pubspec.lock
 
 
