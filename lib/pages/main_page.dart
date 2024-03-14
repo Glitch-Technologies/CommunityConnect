@@ -27,9 +27,10 @@ class _MainPageState extends State<MainPage> {
 
   Future<List<Widget>> search(String term, String genre, var open) async {
     final specialChars = RegExp(r'[\^$*.\[\]{}()?\-"!@#%&/\,><:;_~`+=' "'" ']');
+    var params = {"genre": genre};
 
     if (genre == "None") {
-      genre = "";
+      params.remove("genre");
     }
 
     if (term.contains(specialChars)) {
@@ -38,7 +39,7 @@ class _MainPageState extends State<MainPage> {
       });
     }
     //Todo: please break up search params here
-    var orgs = await Server.search(term, {"genre": genre});
+    var orgs = await Server.search(term, params);
     //print(orgs);
     var businessWidgets = createBusinesses(orgs, (int i) {
       open(i);

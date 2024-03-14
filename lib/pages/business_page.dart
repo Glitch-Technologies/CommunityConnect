@@ -82,7 +82,7 @@ class _BusinessPageState extends State<BusinessPage> {
               Expanded(child: SizedBox()),
               Center(
                   child: FutureBuilder(
-                      future: compileBusiness(businessNum),
+                      future: Server.search("$businessNum", {}),
                       builder: ((context, snapshot) {
                         if (snapshot.hasData) {
                           businessDic = snapshot.data;
@@ -363,13 +363,6 @@ class _BusinessPageState extends State<BusinessPage> {
         ));
   }
 }
-
-compileBusiness(int i) async {
-  var input = await rootBundle.loadString('assets/orgs.json');
-  var orgs = await jsonDecode(input);
-  return orgs["organizations"][i - 1];
-}
-
 
 saveChanges(int num, Map<String, dynamic> properties) async {
   print('$num');
