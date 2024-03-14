@@ -85,9 +85,11 @@ class _BusinessPageState extends State<BusinessPage> {
                       future: Server.search("$businessNum", {}),
                       builder: ((context, snapshot) {
                         if (snapshot.hasData) {
-                          businessDic = snapshot.data;
+                          var temp = snapshot.data;
+                          businessDic = temp["return"]["matches"][0];
                           var resources = businessDic["resources"];
                           var contact = businessDic["contact"]["email"];
+                          print(contact);
                           if (!isEditable) {
                             return Center(
                               child: SizedBox(
