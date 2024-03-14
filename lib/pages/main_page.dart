@@ -17,17 +17,21 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   String searchTerm = "";
-  String genreFilter = "";
+  String genreFilter = "None";
   final searchController = SearchController();
 
   void openBusiness(int i) {
     businessNum = i;
-    Navigator.pushNamed(
-        context, "/business_page/");
+    Navigator.pushNamed(context, "/business_page/");
   }
 
-  Future<List<Widget>> search(String term, var open) async {
-    final specialChars = RegExp(r'[\^$*.\[\]{}()?\-"!@#%&/\,><:;_~`+='"'"']');
+  Future<List<Widget>> search(String term, String genre, var open) async {
+    final specialChars = RegExp(r'[\^$*.\[\]{}()?\-"!@#%&/\,><:;_~`+=' "'" ']');
+    var params = {"genre": genre};
+
+    if (genre == "None") {
+      params.remove("genre");
+    }
 
     if (term.contains(specialChars)) {
       return Future.delayed(Duration(milliseconds: 1), () {
@@ -35,7 +39,7 @@ class _MainPageState extends State<MainPage> {
       });
     }
     //Todo: please break up search params here
-    var orgs = await Server.search(term, {});
+    var orgs = await Server.search(term, params);
     //print(orgs);
     var businessWidgets = createBusinesses(orgs, (int i) {
       open(i);
@@ -57,11 +61,12 @@ class _MainPageState extends State<MainPage> {
             IconButton(
               onPressed: () async {
                 // Button logic here
-                final String response = await Server.tryConnectAll(changeDNS: true);
+                final String response =
+                    await Server.tryConnectAll(changeDNS: true);
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
-                  return AlertDialog(
+                    return AlertDialog(
                       content: Text("$response"),
                     );
                   },
@@ -127,15 +132,34 @@ class _MainPageState extends State<MainPage> {
                       SizedBox(width: 12.5),
                       IconButton(onPressed: () {}, icon: Icon(Icons.search)),
                       SizedBox(width: 12.5),
-                      PopupMenuButton(itemBuilder: (context) {return {"None", "Agriculture", "Art", "Construction", "Education", "Finance", "Health", "Law", "Manufacturing", "Non-Profit", "Technology"}.map((String choice) {
-                        return PopupMenuItem<String>(value: choice,child: Text(choice));}).toList();
-                      }
-                      )
+                      PopupMenuButton(itemBuilder: (context) {
+                        return {
+                          "None",
+                          "Agriculture",
+                          "Art",
+                          "Construction",
+                          "Education",
+                          "Finance",
+                          "Health",
+                          "Law",
+                          "Manufacturing",
+                          "Non-Profit",
+                          "Technology"
+                        }.map((String choice) {
+                          return PopupMenuItem<String>(
+                              value: choice, child: Text(choice));
+                        }).toList();
+                      },
+                      onSelected: (value) {
+                        setState(() {
+                          genreFilter = value;
+                        });
+                      },)
                     ],
                   )),
               const SizedBox(height: 25),
               FutureBuilder(
-                  future: search(searchTerm, (int i) {
+                  future: search(searchTerm, genreFilter, (int i) {
                     openBusiness(i);
                   }),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
