@@ -35,9 +35,10 @@ class _MainPageState extends State<MainPage> {
 
     if (term.contains(specialChars)) {
       return Future.delayed(Duration(milliseconds: 1), () {
-        return [Center(child: Text("kys"))];
+        return [Center(child: Text("Special characters are not allowed to protect against SQL injection. Please remove special characters from your search.", style: TextStyle(color: Colors.red),))];
       });
     }
+    term = term.toLowerCase();
     //Todo: please break up search params here
     var orgs = await Server.search(term, params);
     //print(orgs);
@@ -82,7 +83,7 @@ class _MainPageState extends State<MainPage> {
                 onPressed: () async {
                   // Show help popup logic here
                   var helpmessage =
-                      await rootBundle.loadString('assets/helpbusiness.txt');
+                      await rootBundle.loadString('assets/helpmessage.txt');
                   return await showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -168,7 +169,7 @@ class _MainPageState extends State<MainPage> {
                           child: SingleChildScrollView(
                               child: Column(children: snapshot.data)));
                     } else {
-                      return Text("what");
+                      return Text("");
                     }
                   }),
             ],

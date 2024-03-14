@@ -45,7 +45,10 @@ def search(input):
                 del output['matches'][i]
                 i -= 1
         i += 1
-    return output  # code below is for testing, should be removed on final revision for match in output['matches']:
+    return output  
+    
+    
+    # code below is for testing, should be removed on final revision for match in output['matches']:
 
 
 # below is an example of a call to the search function

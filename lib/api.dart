@@ -7,8 +7,10 @@ import 'dart:async';
 import "package:http/http.dart" as http;
 import 'dart:convert';
 
+// Server class: Handles all API calls
 class Server {
 
+  // Bank of possible endpoints for server contact to ensure reliability
   static List<String> urlbank = [
     "glitchtech.top", 
     "glitchtech.chaseinator.com",
@@ -17,6 +19,7 @@ class Server {
   ];
   static int dns = 1;
 
+  // Base64 encodes the data parameter
   static String en(String data) {
     String encodedData = base64Url.encode(utf8.encode(data));
     return encodedData.replaceAll('=', '~');

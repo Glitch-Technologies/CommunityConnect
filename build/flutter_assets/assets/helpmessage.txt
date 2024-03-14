@@ -1,0 +1,6 @@
+Main Page:
+
+Welcome to the main page!
+To search for a specific keyword or business number, you may use the search bar
+To filter by business sector, use the filters dropdown menu
+To view a business or edit the business' info, click on the business card

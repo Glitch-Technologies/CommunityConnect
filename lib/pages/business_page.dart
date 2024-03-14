@@ -30,7 +30,7 @@ class _BusinessPageState extends State<BusinessPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: midnightGreen,
-            title: Text("CommunityConnect"),
+            title: Text("CommunityConnect", style: TextStyle(color: Colors.white),),
             actions: [
               IconButton(
                 onPressed: () async {
