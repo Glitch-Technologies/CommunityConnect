@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> {
 
     if (term.contains(specialChars)) {
       return Future.delayed(Duration(milliseconds: 1), () {
-        return [Center(child: Text("kys"))];
+        return [Center(child: Text("Special characters are not allowed to protect against SQL injection. Please remove special characters from your search.", style: TextStyle(color: Colors.red),))];
       });
     }
     term = term.toLowerCase();
