@@ -1,0 +1,13 @@
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/icudtl.dat
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/flutter_windows.dll
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.bin
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/assets/colors.dart
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/assets/orgs.json
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/assets/users.json
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/FontManifest.json
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+C:/Users/vince/Flutter_Projects/communityconnect/build/windows/x64/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag

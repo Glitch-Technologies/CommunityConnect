@@ -168,7 +168,7 @@ class _MainPageState extends State<MainPage> {
                           child: SingleChildScrollView(
                               child: Column(children: snapshot.data)));
                     } else {
-                      return Text("what");
+                      return Text("");
                     }
                   }),
             ],
