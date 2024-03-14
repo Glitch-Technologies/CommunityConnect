@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
     }
     //Todo: please break up search params here
     var orgs = await Server.search(term, {});
-    print(orgs);
+    //print(orgs);
     var businessWidgets = createBusinesses(orgs, (int i) {
       open(i);
     });
@@ -278,6 +278,6 @@ Future<List<Widget>> createBusinesses(var orgs, var open) async {
         }));
     businessWList.add(const SizedBox(height: 25));
   }
-  print(businessWList);
+  //print(businessWList);
   return businessWList;
 }

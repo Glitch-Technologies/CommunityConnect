@@ -15,8 +15,10 @@ serverPort = 10
 
 #Modern URL-safe strings. See GlitchChat.
 def de(input_str):
-  return base64.urlsafe_b64decode(input_str.replace('~', '=')).decode("utf-8")
-#Kept for legacy. Server will hopefully never need to encode. 
+  a = input_str.replace('~', '=')
+  return base64.urlsafe_b64decode(a).decode("utf-8")
+  #Kept for legacy. Server will hopefully never need to encode. 
+
 def en(input):
   return base64.urlsafe_b64encode(bytes(input, "utf-8")).replace(b'=', b'~')
 
@@ -53,6 +55,7 @@ def get_query(query):
 
 class CommunityConnectServer(BaseHTTPRequestHandler):
     def do_GET(self):
+        print(self.path)
         p = self.path.split("?")[0]
         # Refer to p[0] for get path
         query = urlparse(self.path).query
