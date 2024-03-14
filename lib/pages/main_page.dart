@@ -38,6 +38,7 @@ class _MainPageState extends State<MainPage> {
         return [Center(child: Text("kys"))];
       });
     }
+    term = term.toLowerCase();
     //Todo: please break up search params here
     var orgs = await Server.search(term, params);
     //print(orgs);
