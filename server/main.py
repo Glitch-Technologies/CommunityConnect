@@ -84,7 +84,9 @@ class CommunityConnectServer(BaseHTTPRequestHandler):
         if p == "/upload":
             num = int(de(query_components["num"]))
             upload_input = de(query_components["input"])
-            edit_orgs(num, upload_input)
+            print(upload_input)
+            upload_input_dict = json.loads(upload_input)
+            edit_orgs(num, upload_input_dict)
 
             self.wfile.write(bytes(json.dumps({"success": "1"}), "utf-8"))
             
