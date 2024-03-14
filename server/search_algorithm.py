@@ -1,10 +1,11 @@
 import base64
-# input = {'search': "john%20environmental", 'parameters': {'location': "california", 'genre': "Technology", }, 'organizations': []}
+import re
+# input = {'search': "john environmental", 'parameters': {'location': "california", 'genre': "Technology", }, 'organizations': []}
 
 def search(input):
 
     output = {'matches': []}
-    terms = input['search'].split("%20")
+    terms = input['search'].split(" ")
     
     # return every organization if empty search
     if len(input['search']) == 0 or "laremy" in terms:
@@ -53,7 +54,7 @@ with open("server/orgs.json") as f:
 	orgs = json.loads(f.read())['organizations']
 
 
-thingy = {'search': "john%20solar", 'organizations': orgs, 'parameters': {'genre': "Technology"}}
+thingy = {'search': "john solar", 'organizations': orgs, 'parameters': {'genre': "Technology"}}
 
 print("\n\n\n")
 
