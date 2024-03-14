@@ -24,7 +24,6 @@ class Server {
 
   static Future<dynamic> search(String term, Map<String, dynamic> values) async {
     String request = buildRequest("search", {"term": term, ...values}, encode: true);
-    print(request);
     var response = await fetchData(request);
     String responseData = response.toString();
     print(responseData);
@@ -32,8 +31,10 @@ class Server {
   }
 
   static Future<dynamic> upload(int num, Map<String, dynamic> properties) async {
-    String request = buildRequest("upload", {"num": num, "input": properties}, encode: true);
+    String request = buildRequest("upload", {"num": "$num", "input": "$properties"}, encode: true);
+    print(request);
     var response = await fetchData(request);
+    print("$response");
     return response;
   }
 
